@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIO PMSA | Relatório Executivo & Calendário de Andamento (04/11/2026)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Helvetica+Neue:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-white: #FFFFFF;
+    --text-black: #000000;
+    --text-muted: #555555;
+    --text-light: #888888;
+    --line-black: #000000;
+    --line-gray: #E0E0E0;
+    --accent-red: #D32F2F;
+    --accent-red-hover: #B71C1C;
+    --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-body: 'Courier Prime', 'Courier New', Courier, monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--bg-white);
+    color: var(--text-black);
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, .heading-font {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-white);
+    border-bottom: 2px solid var(--line-black);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .brand h1 {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  .brand span {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+  }
+
+  .mode-switch {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--line-black);
+  }
+
+  .mode-btn {
+    padding: 6px 16px;
+    background: transparent;
+    border: none;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .mode-btn.active {
+    background: var(--line-black);
+    color: var(--bg-white);
+  }
+
+  .mode-btn:hover:not(.active) {
+    background: var(--line-gray);
+  }
+
+  main {
+    padding: 24px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* SLIDE VIEW */
+  #slides-view {
+    display: block;
+  }
+
+  .slide-container {
+    border: 1px solid var(--line-black);
+    background: var(--bg-white);
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 40px;
+  }
+
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--line-black);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+
+  .slide-pretitle {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  .slide-title {
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .slide-meta {
+    text-align: right;
+    font-size: 12px;
+  }
+
+  .slide-meta .number {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--line-black);
+  }
+
+  .slide-body {
+    flex: 1;
+  }
+
+  .slide-footer {
+    border-top: 1px solid var(--line-black);
+    padding-top: 16px;
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .slide-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .nav-btn {
+    padding: 10px 24px;
+    background: var(--bg-white);
+    border: 1px solid var(--line-black);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    background: var(--line-black);
+    color: var(--bg-white);
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .slide-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .slide-dot {
+    width: 20px;
+    height: 4px;
+    background: var(--line-gray);
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .slide-dot.active {
+    background: var(--accent-red);
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  .kpi-card {
+    border: 1px solid var(--line-black);
+    padding: 18px;
+    background: var(--bg-white);
+  }
+
+  .kpi-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .kpi-value {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .kpi-value.alert {
+    color: var(--accent-red);
+  }
+
+  .kpi-subtext {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .arch-box {
+    border: 1px solid var(--line-black);
+    padding: 24px;
+    height: 100%;
+    position: relative;
+    background: var(--bg-white);
+  }
+
+  .arch-box.critical-highlight {
+    border-left: 6px solid var(--accent-red);
+  }
+
+  .arch-box h3 {
+    font-size: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line-gray);
+  }
+
+  .arch-list {
+    list-style: none;
+  }
+
+  .arch-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--line-gray);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+
+  .arch-list li:last-child {
+    border-bottom: none;
+  }
+
+  .arch-list li .label {
+    color: var(--text-muted);
+  }
+
+  .arch-list li .val {
+    font-weight: 700;
+  }
+
+  .arch-list li .val.red {
+    color: var(--accent-red);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--line-black);
+  }
+
+  .badge.critico {
+    background: var(--accent-red);
+    color: var(--bg-white);
+    border-color: var(--accent-red);
+  }
+
+  .badge.atencao {
+    background: var(--bg-white);
+    color: var(--accent-red);
+    border-color: var(--accent-red);
+    border-width: 2px;
+  }
+
+  .badge.monitorar {
+    background: var(--bg-white);
+    color: var(--text-black);
+    border-color: var(--line-black);
+  }
+
+  .badge.concluido {
+    background: #000000;
+    color: #FFFFFF;
+    border-color: #000000;
+  }
+
+  /* DASHBOARD VIEW */
+  #dashboard-view {
+    display: none;
+  }
+
+  .subnav-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--line-black);
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+
+  .subnav-tab {
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid var(--line-gray);
+    border-bottom: none;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+  }
+
+  .subnav-tab.active {
+    background: var(--line-black);
+    color: var(--bg-white);
+    border-color: var(--line-black);
+  }
+
+  .subnav-tab:hover:not(.active) {
+    background: var(--line-gray);
+  }
+
+  .filter-bar {
+    border: 1px solid var(--line-black);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .filter-group label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  .filter-input, .filter-select {
+    padding: 6px 12px;
+    border: 1px solid var(--line-black);
+    background: var(--bg-white);
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--text-black);
+    outline: none;
+  }
+
+  /* Project Grid */
+  .project-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .project-card {
+    border: 1px solid var(--line-black);
+    padding: 20px;
+    background: var(--bg-white);
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-red);
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .card-id {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .card-mother {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: var(--text-black);
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .critical-callout {
+    font-size: 11px;
+    background: #FFF5F5;
+    border-left: 3px solid var(--accent-red);
+    padding: 6px 8px;
+    margin-bottom: 12px;
+    color: #900;
+  }
+
+  .andamento-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 10px;
+    background: #F0F0F0;
+    border: 1px solid #CCCCCC;
+    margin-bottom: 10px;
+  }
+
+  .card-meta {
+    border-top: 1px solid var(--line-gray);
+    padding-top: 12px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* CALENDÁRIO DE ANDAMENTO (Acompanhamento das Principais Datas) */
+  .calendar-main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .calendar-month-card {
+    border: 1px solid var(--line-black);
+    padding: 20px;
+    background: var(--bg-white);
+  }
+
+  .cal-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--line-black);
+  }
+
+  .cal-nav-title {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .cal-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .cal-table th {
+    border: 1px solid var(--line-black);
+    background: #FAFAFA;
+    padding: 8px 4px;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .cal-table td {
+    border: 1px solid var(--line-gray);
+    height: 84px;
+    vertical-align: top;
+    padding: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    background: var(--bg-white);
+  }
+
+  .cal-table td:hover {
+    background: #F5F5F5;
+  }
+
+  .cal-table td.today {
+    border: 2px solid var(--accent-red) !important;
+    background: #FFFDFD;
+  }
+
+  .cal-table td.selected {
+    border: 2px solid var(--line-black) !important;
+    background: #F0F0F0;
+  }
+
+  .cal-table td.other-month {
+    color: #CCCCCC;
+    background: #FAFAFA;
+    cursor: default;
+  }
+
+  .day-num {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .day-badge-today {
+    background: var(--accent-red);
+    color: #FFF;
+    font-size: 8px;
+    padding: 1px 4px;
+    font-weight: 700;
+  }
+
+  .cal-event-pill {
+    display: block;
+    font-size: 9px;
+    line-height: 1.2;
+    padding: 2px 4px;
+    margin-bottom: 2px;
+    border: 1px solid var(--line-black);
+    background: var(--bg-white);
+    color: var(--text-black);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cal-event-pill.critico {
+    background: var(--accent-red);
+    color: #FFFFFF;
+    border-color: var(--accent-red);
+  }
+
+  .cal-event-pill.atencao {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    font-weight: 700;
+  }
+
+  .cal-event-pill.concluido {
+    background: #000000;
+    color: #FFFFFF;
+  }
+
+  /* Agenda Side Panel */
+  .cal-agenda-panel {
+    border: 1px solid var(--line-black);
+    padding: 20px;
+    background: var(--bg-white);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .agenda-header {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--line-black);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .agenda-list {
+    overflow-y: auto;
+    max-height: 540px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .agenda-card {
+    border: 1px solid var(--line-black);
+    padding: 12px;
+    background: #FAFAFA;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+
+  .agenda-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-red);
+  }
+
+  .agenda-card.critical {
+    border-left: 4px solid var(--accent-red);
+  }
+
+  .agenda-card.atencao {
+    border-left: 4px solid var(--accent-red);
+  }
+
+  .agenda-card-date {
+    font-size: 10px;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .agenda-card-title {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .agenda-card-desc {
+    font-size: 11px;
+    line-height: 1.4;
+    color: #333333;
+  }
+
+  /* TIMELINE / EVOLUTION VISUALIZER */
+  .timeline-container {
+    border: 1px solid var(--line-black);
+    padding: 24px;
+    background: var(--bg-white);
+    margin-bottom: 32px;
+  }
+
+  .project-timeline-block {
+    border-bottom: 1px solid var(--line-gray);
+    padding: 20px 0;
+  }
+
+  .project-timeline-block:last-child {
+    border-bottom: none;
+  }
+
+  .pt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+
+  .pt-title {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .evolution-track {
+    position: relative;
+    padding-left: 24px;
+    margin-left: 12px;
+    border-left: 2px solid var(--line-black);
+  }
+
+  .evolution-item {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .evolution-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .evolution-node {
+    position: absolute;
+    left: -31px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg-white);
+    border: 2px solid var(--line-black);
+  }
+
+  .evolution-node.concluido {
+    background: var(--line-black);
+  }
+
+  .evolution-node.critico {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+  }
+
+  .evolution-node.atencao {
+    background: var(--bg-white);
+    border-color: var(--accent-red);
+  }
+
+  .evolution-content {
+    background: #FAFAFA;
+    border: 1px solid var(--line-gray);
+    padding: 12px 16px;
+  }
+
+  .evolution-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .evolution-action {
+    font-size: 12px;
+    color: var(--text-black);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .evolution-feedback {
+    font-size: 11px;
+    background: #FFFFFF;
+    border-left: 3px solid var(--line-black);
+    padding: 6px 10px;
+    margin-top: 6px;
+    color: var(--text-muted);
+  }
+
+  /* Data Table */
+  .table-wrapper {
+    border: 1px solid var(--line-black);
+    overflow-x: auto;
+    margin-top: 24px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  th {
+    background: var(--bg-white);
+    border-bottom: 2px solid var(--line-black);
+    padding: 10px 14px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+  }
+
+  th:hover {
+    background: var(--line-gray);
+  }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line-gray);
+  }
+
+  tr:hover td {
+    background: #FAFAFA;
+  }
+
+  /* Modal Details */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+
+  .modal-content {
+    background: var(--bg-white);
+    border: 2px solid var(--line-black);
+    max-width: 850px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 32px;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: 1px solid var(--line-black);
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .modal-close:hover {
+    background: var(--line-black);
+    color: var(--bg-white);
+  }
+
+  .timeline-bar {
+    display: flex;
+    border: 1px solid var(--line-black);
+    margin: 16px 0;
+  }
+
+  .timeline-step {
+    flex: 1;
+    padding: 10px 8px;
+    text-align: center;
+    border-right: 1px solid var(--line-gray);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  .timeline-step:last-child {
+    border-right: none;
+  }
+
+  .timeline-step.active {
+    background: var(--line-black);
+    color: var(--bg-white);
+    font-weight: 700;
+  }
+
+  .timeline-step.alert {
+    background: var(--accent-red);
+    color: var(--bg-white);
+    font-weight: 700;
+  }
+
+  .mies-quote {
+    border-left: 2px solid var(--line-black);
+    padding-left: 16px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 20px 0;
+  }
+
+  @media print {
+    header, .mode-switch, .slide-controls, .filter-bar, .subnav-tabs {
+      display: none !important;
+    }
+    .slide-container {
+      border: none;
+      page-break-after: always;
+      min-height: auto;
+      padding: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>PREFEITURA DE SANTO ANDRÉ</h1>
+    <span>Secretaria de Infraestrutura e Obras (SIO) • Relatório Semanal (04/11/2026)</span>
+  </div>
+  <div style="display: flex; gap: 12px; align-items: center;">
+    <div class="mode-switch">
+      <button class="mode-btn active" id="btn-slides" onclick="switchView('slides')">Pranchas / Slides</button>
+      <button class="mode-btn" id="btn-dashboard" onclick="switchView('dashboard')">Painel Completo</button>
+    </div>
+    <button class="nav-btn" style="padding: 6px 12px;" onclick="window.print()">Imprimir / PDF</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- VIEW 1: SLIDES -->
+  <section id="slides-view">
+    <div class="slide-container" id="slide-content"></div>
+
+    <div class="slide-controls">
+      <button class="nav-btn" id="prev-btn" onclick="prevSlide()">← Anterior</button>
+      <div class="slide-dots" id="slide-dots"></div>
+      <button class="nav-btn" id="next-btn" onclick="nextSlide()">Próxima →</button>
+    </div>
+  </section>
+
+  <!-- VIEW 2: DASHBOARD -->
+  <section id="dashboard-view">
+    <div style="margin-bottom: 20px;">
+      <h2 style="font-size: 24px; margin-bottom: 6px;">Painel de Controle e Acompanhamento de Prazos</h2>
+      <p style="color: var(--text-muted);">Base integrada: Abas PROJETOS e ANDAMENTO • Planilha SIO-Controle-R00 (Atualizada em 04/11/2026)</p>
+    </div>
+
+    <!-- Subnav Tabs in Dashboard -->
+    <div class="subnav-tabs">
+      <button class="subnav-tab active" id="tab-btn-cards" onclick="switchDashTab('cards')">Visão Geral dos Cards (43)</button>
+      <button class="subnav-tab" id="tab-btn-calendar" onclick="switchDashTab('calendar')">Calendário de Andamento & Prazos</button>
+      <button class="subnav-tab" id="tab-btn-timeline" onclick="switchDashTab('timeline')">Linha do Tempo & Evolução Semanal (Aba ANDAMENTO)</button>
+      <button class="subnav-tab" id="tab-btn-table" onclick="switchDashTab('table')">Tabela de Dados Completa</button>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid-5" style="margin-bottom: 24px;">
+      <div class="kpi-card">
+        <div class="kpi-label">Projetos Ativos</div>
+        <div class="kpi-value">39</div>
+        <div class="kpi-subtext">Carteira consolidada SIO</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Investimento Total Alocado</div>
+        <div class="kpi-value" style="font-size: 22px;">R$ 609,1M</div>
+        <div class="kpi-subtext">+R$ 30M Trincheira, +R$ 7,9M UPA Super</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Ações na Aba ANDAMENTO</div>
+        <div class="kpi-value" style="color: var(--line-black);">52 AÇÕES</div>
+        <div class="kpi-subtext">Histórico semanal contínuo</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Ações Concluídas</div>
+        <div class="kpi-value">14</div>
+        <div class="kpi-subtext">Licenciamento Actos, Terreno CAPS</div>
+      </div>
+      <div class="kpi-card" style="border-color: var(--accent-red);">
+        <div class="kpi-label" style="color: var(--accent-red);">Alertas Imediatos</div>
+        <div class="kpi-value alert">3</div>
+        <div class="kpi-subtext">Pacote Licitação CRAISA, Matrícula</div>
+      </div>
+    </div>
+
+    <!-- TAB 1: CARDS -->
+    <div id="dash-tab-cards">
+      <div class="filter-bar">
+        <div class="filter-group" style="flex: 2; min-width: 200px;">
+          <label>Pesquisa Livre</label>
+          <input type="text" id="search-input" class="filter-input" placeholder="Buscar por projeto, descrição, endereço..." oninput="filterProjects()">
+        </div>
+        <div class="filter-group" style="flex: 1; min-width: 140px;">
+          <label>Status</label>
+          <select id="filter-status" class="filter-select" onchange="filterProjects()">
+            <option value="">Todos os Status</option>
+            <option value="CRÍTICO">Crítico</option>
+            <option value="ATENÇÃO">Atenção</option>
+            <option value="MONITORAR">Monitorar</option>
+          </select>
+        </div>
+        <div class="filter-group" style="flex: 1; min-width: 140px;">
+          <label>Responsável</label>
+          <select id="filter-resp" class="filter-select" onchange="filterProjects()">
+            <option value="">Todos os Responsáveis</option>
+            <option value="Fábio">Fábio</option>
+            <option value="Lucas">Lucas</option>
+            <option value="Bernadete">Bernadete</option>
+            <option value="Ricardo">Ricardo</option>
+            <option value="Ivana">Ivana</option>
+            <option value="Daniel">Daniel</option>
+            <option value="Douglas">Douglas</option>
+            <option value="À definir">À definir (5)</option>
+          </select>
+        </div>
+        <div class="filter-group" style="flex: 1; min-width: 140px;">
+          <label>Programa / Mãe</label>
+          <select id="filter-prog" class="filter-select" onchange="filterProjects()">
+            <option value="">Todos os Programas</option>
+            <option value="CAF">Programa CAF II (4)</option>
+            <option value="CENTRO">Plano Requalificação Centro (4)</option>
+            <option value="SAÚDE">Cidade da Saúde (6)</option>
+            <option value="PEDIATRIA">Serviço Unificado Pediatria (2)</option>
+            <option value="SEMENTES">Sementes do Futuro (6)</option>
+            <option value="CIRCUITO">Circuito Verde (6)</option>
+          </select>
+        </div>
+      </div>
+      <div class="project-cards-grid" id="projects-grid"></div>
+    </div>
+
+    <!-- TAB 2: CALENDÁRIO DE ANDAMENTO & PRAZOS -->
+    <div id="dash-tab-calendar" style="display: none;">
+      <div class="filter-bar">
+        <div class="filter-group" style="flex: 2; min-width: 250px;">
+          <label>Filtrar por Projeto</label>
+          <select id="cal-filter-proj" class="filter-select" onchange="renderCalendar()">
+            <option value="">Todos os Projetos</option>
+          </select>
+        </div>
+        <div class="filter-group" style="flex: 1; min-width: 140px;">
+          <label>Tipo de Evento</label>
+          <select id="cal-filter-type" class="filter-select" onchange="renderCalendar()">
+            <option value="">Todos os Tipos</option>
+            <option value="PRAZO">Prazos Limite</option>
+            <option value="REUNIÃO">Reuniões Técnicas</option>
+            <option value="ENTREGA">Entregas de Obra</option>
+            <option value="EDITAL">Previsões de Edital</option>
+          </select>
+        </div>
+        <div class="filter-group" style="flex: 1; min-width: 140px;">
+          <label>Status</label>
+          <select id="cal-filter-status" class="filter-select" onchange="renderCalendar()">
+            <option value="">Todos os Status</option>
+            <option value="CRÍTICO">Crítico</option>
+            <option value="ATENÇÃO">Atenção</option>
+            <option value="CONCLUÍDO">Concluído</option>
+            <option value="MONITORAR">Monitorar</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calendar-main-grid">
+        <!-- Monthly Grid View -->
+        <div class="calendar-month-card">
+          <div class="cal-nav-bar">
+            <button class="nav-btn" style="padding:4px 12px;" onclick="prevMonth()">← Mês Anterior</button>
+            <div class="cal-nav-title" id="cal-current-month-label">OUTUBRO 2026</div>
+            <button class="nav-btn" style="padding:4px 12px;" onclick="nextMonth()">Próximo Mês →</button>
+          </div>
+          <table class="cal-table">
+            <thead>
+              <tr>
+                <th>DOM</th><th>SEG</th><th>TER</th><th>QUA</th><th>QUI</th><th>SEX</th><th>SÁB</th>
+              </tr>
+            </thead>
+            <tbody id="cal-grid-body"></tbody>
+          </table>
+          <div style="margin-top: 12px; font-size: 10px; color: var(--text-muted); display: flex; gap: 16px;">
+            <span><strong style="color:var(--accent-red);">■ Borda Vermelha:</strong> Hoje (04/11/2026)</span>
+            <span><strong>Clique em um dia</strong> para filtrar a agenda de prazos ao lado.</span>
+          </div>
+        </div>
+
+        <!-- Agenda Panel -->
+        <div class="cal-agenda-panel">
+          <div class="agenda-header">
+            <span id="agenda-panel-title">Agenda: Outubro 2026</span>
+            <span style="font-size:10px; color:var(--text-muted);" id="agenda-count-badge">0 eventos</span>
+          </div>
+          <div class="agenda-list" id="agenda-cards-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: TIMELINE / EVOLUÇÃO SEMANAL (ABA ANDAMENTO) -->
+    <div id="dash-tab-timeline" style="display: none;">
+      <div class="filter-bar">
+        <div class="filter-group" style="flex: 2; min-width: 250px;">
+          <label>Filtrar por Projeto</label>
+          <select id="timeline-project-filter" class="filter-select" onchange="renderTimelineTab()">
+            <option value="">Todos os Projetos com Atividade</option>
+          </select>
+        </div>
+        <div class="filter-group" style="flex: 1; min-width: 150px;">
+          <label>Status da Ação</label>
+          <select id="timeline-status-filter" class="filter-select" onchange="renderTimelineTab()">
+            <option value="">Todos os Status</option>
+            <option value="CONCLUÍDO">Concluído</option>
+            <option value="ATENÇÃO">Atenção</option>
+            <option value="CRÍTICO">Crítico</option>
+            <option value="MONITORAR">Monitorar</option>
+          </select>
+        </div>
+      </div>
+      <div class="timeline-container" id="timeline-view-container"></div>
+    </div>
+
+    <!-- TAB 4: TABLE -->
+    <div id="dash-tab-table" style="display: none;">
+      <div class="table-wrapper">
+        <table id="projects-table">
+          <thead>
+            <tr>
+              <th onclick="sortTable(0)">ID</th>
+              <th onclick="sortTable(1)">Projeto</th>
+              <th onclick="sortTable(2)">Projeto Mãe</th>
+              <th onclick="sortTable(3)">Responsável</th>
+              <th onclick="sortTable(4)">Escala</th>
+              <th onclick="sortTable(5)">Orçamento</th>
+              <th onclick="sortTable(6)">Ponto Crítico</th>
+              <th onclick="sortTable(7)">Status Geral</th>
+              <th onclick="sortTable(8)">Evolução Semanal</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Modal Details -->
+<div class="modal-backdrop" id="project-modal" onclick="closeModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const rawProjects = [{"id": 1, "projeto": "SUPER URGENCIA", "projeto_mae": "SUPER - SERVIÇO UNIICADO DE PEDIATRIA", "responsavel": "Bernadete", "descricao": "UPA SUPER - Serviço Unificado de Pediatria com foco em atendimentos de urgência\nPRAZO - 04/2027", "localizacao": "Praça IV Centenário, 08 - Centro, Santo André - SP, 09015-080", "escala": "Edifício", "categoria": "Saúde", "secretaria": "Secretaria da Saúde, Secretaria de Manutenção e Serviços Urbanos", "ficha_tecnica": "Área: 1.899,64 m²", "fonte_recurso": "ATA DA SEC. DE MANUTENÇÃO", "orcamento_raw": "R$ 7.935.512,88", "orcamento_num": 7935512.88, "modelo_contratacao": "ATA DE MANUTENÇÃO", "desenv_projeto": "N/A", "publicacao_edital": "N/A", "ordem_servico": "01/02/2026", "entrega": "01/04/2027", "ponto_critico": "VERBA\nO.S. 02/2026 \n18/05/26: $3.026.971,35", "status": "MONITORAR", "andamento": [{"id": 1, "id_raw": "1", "projeto": "SUPER URGENCIA", "assunto": "Projeto", "etapa": "Projeto Executivo", "responsavel": "Ivana", "data_reuniao": "25/08/2026", "acao": "Elaborar projeto de inserção urbana, considerando a acessibilidade", "devolutiva": "", "prazo": "01/09/2026", "status": "MONITORAR"}, {"id": 1, "id_raw": "1", "projeto": "SUPER URGENCIA", "assunto": "Projeto", "etapa": "Projeto Executivo", "responsavel": "Bernadete", "data_reuniao": "25/08/2026", "acao": "Elaborar projeto de elétrica e mandar para obra", "devolutiva": "", "prazo": "", "status": "MONITORAR"}, {"id": 1, "id_raw": "1", "projeto": "SUPER URGENCIA", "assunto": "Termo de Referência", "etapa": "Compras", "responsavel": "Jaqueline", "data_reuniao": "25/08/2026", "acao": "Elaborar Termo de Referência para aquisição de mobiliário e equipamento médico", "devolutiva": "", "prazo": "", "status": "MONITORAR"}, {"id": 1, "id_raw": "1", "projeto": "SUPER URGENCIA", "assunto": "Acompanhamento de obra", "etapa": "", "responsavel": "Bernadete", "data_reuniao": "25/08/2026", "acao": "Acompanhar obra junto à contratada execução da cobertura e das instalações elétricas", "devolutiva": "", "prazo": "16/11/2026", "status": "MONITORAR"}]}, {"id": 2, "projeto": "SUPER ESPECIALIDADES", "projeto_mae": "SUPER - SERVIÇO UNIICADO DE PEDIATRIA", "responsavel": "Bernadete", "descricao": "Serviço Unificado de Pediatria com foco em conultas especializadas (antigo Instituto Ronald Mc Donald´s)\nTR + Planta + Orçamento + Memorial\n07/08/2026", "localizacao": "Av. Príncipe de Gales, 821 - Vila Príncipe de Gales, Santo André - SP, 09060-650", "escala": "Edifício", "categoria": "Saúde", "secretaria": "Secretaria da Saúde", "ficha_tecnica": "Área: 2.024,82 m²", "fonte_recurso": "PSA - FUABC\nUNINOVE", "orcamento_raw": "R$ 3.789.000,00", "orcamento_num": 3789000.0, "modelo_contratacao": "Aquisição direta pela FUABC + Contrapartida UNINOVE", "desenv_projeto": "N/A", "publicacao_edital": "N/A", "ordem_servico": "N/A", "entrega": "19/11/2026", "ponto_critico": "REPASSE DE VERBA", "status": "MONITORAR", "andamento": [{"id": 2, "id_raw": "2", "projeto": "SUPER ESPECIALIDADES", "assunto": "Assinatura Termo de Cooperação", "etapa": "Termo de Cooperação", "responsavel": "Bernadete, Jaqueline, Maryluce", "data_reuniao": "25/08/2026", "acao": "Aguardar assinatura do T.C. para elaboração do projeto de comunicação visual especial do equipamento SUPER", "devolutiva": "", "prazo": "", "status": "MONITORAR"}, {"id": 2, "id_raw": "2", "projeto": "SUPER ESPECIALIDADES", "assunto": "Monitorar Termo de Cooperação", "etapa": "Termo de Cooperação", "responsavel": "Maryluce, André, Gilvan", "data_reuniao": "", "acao": "Monitorar a análise do Termo de Cooperação pela Faculdade de Medicina do ABC e a Secretaria de Saúde", "devolutiva": "", "prazo": "14/08/2026", "status": "CRÍTICO"}, {"id": 2, "id_raw": "2", "projeto": "SUPER ESPECIALIDADES", "assunto": "Entrega", "etapa": "Obra", "responsavel": "Bernadete", "data_reuniao": "28/10/2026", "acao": "Previsão de entrega da obra", "devolutiva": "", "prazo": "19/11/2026", "status": "MONITORAR"}]}, {"id": 3, "projeto": "SEMENTES DO FUTURO", "projeto_mae": "SEMENTES DO FUTURO", "responsavel": "Fábio", "descricao": "Construção de Escola de Ensino Fundamental I para 800 alunos em tempo integral, com programas de salas de inovações. Viabilidade de locação de imovel compátivel através do modelo Contrato Built to Suit (BTS).", "localizacao": "Av. Dom Pedro I, 530 - Vila América, Santo André - SP, 09130-400", "escala": "Edifício", "categoria": "Educação", "secretaria": "Secretaria de Educação", "ficha_tecnica": "Área: 5.000m²", "fonte_recurso": "Contrato Built to Suit (BTS)", "orcamento_raw": "R$ 13.000.000,00", "orcamento_num": 13000000.0, "modelo_contratacao": "Built to Suit", "desenv_projeto": "N/A", "publicacao_edital": "N/A", "ordem_servico": "N/A", "entrega": "01/02/2027", "ponto_critico": "Aguardando definição da Secretaria de Educação junto ao Prefeito para negociações com proprietário", "status": "MONITORAR", "andamento": [{"id": 3, "id_raw": "3", "projeto": "SEMENTES DO FUTURO", "assunto": "Desenvolvimento de estudo de viabilidade", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "25/08/2026", "acao": "Fazer estudo de layout conforme diretrizes da Sec. Educação para implantação nos galpões da Atento.\n- Enviar para Fábio (Macla) para análise", "devolutiva": "Layout preliminar enviado ao proprietário Fábio.\nAguardando devolutiva quanto ao custo aluguel x obra", "prazo": "28/09/2026", "status": "CONCLUÍDO"}, {"id": 3, "id_raw": "3", "projeto": "SEMENTES DO FUTURO", "assunto": "Prospecção de área", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "25/08/2026", "acao": "Fazer pesquisa de outras áreas como Plano B caso haja negativa.", "devolutiva": "", "prazo": "28/09/2026", "status": "MONITORAR"}, {"id": 3, "id_raw": "3", "projeto": "SEMENTES DO FUTURO", "assunto": "Reunião", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "06/10/2026", "acao": "Reunião realizada com Fabio (Macla) e Naura, juntamente com Alan e Karla da Secretaria de Educação.\nFoi apresentado estivamativa de valores do custo obra (civil + mobiliário) = R$ 13 milhões.\nFábio e Naura irão fazer o estudo de valores Aluguel x Investimento para um modelo de contratação Built to Suit (BTS).", "devolutiva": "", "prazo": "09/10/2026", "status": "ATENÇÃO"}]}, {"id": 4, "projeto": "PLANO DE REQUALIFICAÇÃO CENTRO - PROJETOS", "projeto_mae": "PLANO DE REQUALIFICAÇÃO DO CENTRO", "responsavel": "Fábio", "descricao": "Plano de requalificação da região central da cidade. \nElaboração de projetos através da ata do CONFEA", "localizacao": "Praça do Carmo, s/n - Centro, Santo André - SP, 09010-020", "escala": "Urbana", "categoria": "Planejamento Urbano", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 4, "id_raw": "4", "projeto": "PLANO DE REQUALIFICAÇÃO CENTRO - PROJETOS", "assunto": "Cooperação técnica", "etapa": "Cooperação Técnica", "responsavel": "Bernadete, Fábio", "data_reuniao": "08/10/2026", "acao": "Realizado reunião com Paula e Mariana do curso de Arquitetura da universidade Mauá.\nProposta de cooperação técnica nos levantamentos/diagnósticos do centro\nDe 09 a 13/11 - semana de arquitetura.\nFazer reunião até 26/10", "devolutiva": "Reunião agendada para dia 09/11.\nLocal: CITE\nHorário: 09h ao 12h", "prazo": "09/11/2026", "status": "MONITORAR"}]}, {"id": 5, "projeto": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "projeto_mae": "PLANO DE REQUALIFICAÇÃO DO CENTRO", "responsavel": "Fábio", "descricao": "Plano de requalificação da região central da cidade. \nFase I - Oliveira Lima: infraestrutura urbana\nObservação: mobiliario urbana considerar em outra etapa/recurso", "localizacao": "R. Cel. Oliveira Lima, 464-494 - Centro, Santo André - SP, 09010-040", "escala": "Urbana", "categoria": "Planejamento Urbano", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Extensão: 1 km de via", "fonte_recurso": "Caixa", "orcamento_raw": "R$ 50.000.000,00", "orcamento_num": 50000000.0, "modelo_contratacao": "Integral", "desenv_projeto": "06/11/2026", "publicacao_edital": "01/11/2026", "ordem_servico": "01/03/2027", "entrega": "01/04/2028", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 5, "id_raw": "5", "projeto": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "assunto": "Entrega de projetos: Piso e Cobertura", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "14/10/2026", "acao": "Entrega de projetos para licitação: Piso e Cobertura.", "devolutiva": "", "prazo": "06/11/2026", "status": "MONITORAR"}, {"id": 5, "id_raw": "5", "projeto": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "assunto": "Entrega de projetos: Paisagismo e Mobiliário", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "14/10/2026", "acao": "Entrega de projetos para licitação: Paisagismo e Mobiliário", "devolutiva": "", "prazo": "30/11/2026", "status": "MONITORAR"}]}, {"id": 6, "projeto": "NEXUS", "projeto_mae": "NEXUS 500", "responsavel": "Bernadete", "descricao": "Nexus - Centro Tecnologico Integrado", "localizacao": "R. Almeida Garret, 52 - Vila Guiomar, Santo André - SP, 09090-470", "escala": "Edifício", "categoria": "Segurança", "secretaria": "\"\"\"Secretaria de Administração, Inovação e Tecnologia\"\"\"", "ficha_tecnica": "Área: 1.614m²", "fonte_recurso": "Desenvolve SP", "orcamento_raw": "R$ 14.383.708,74", "orcamento_num": 14383708.74, "modelo_contratacao": "Semi integrada", "desenv_projeto": "ANALISE PROPOSTAS", "publicacao_edital": "", "ordem_servico": "01/12/2026", "entrega": "01/04/2028", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 6, "id_raw": "6", "projeto": "NEXUS", "assunto": "Ordem de Serviço", "etapa": "Obra", "responsavel": "Jaqueline", "data_reuniao": "29/08/2026", "acao": "- O.S. para dezembro de 2026. \n- Prever tapume.", "devolutiva": "", "prazo": "06/09/2026", "status": "MONITORAR"}]}, {"id": 7, "projeto": "UPA CRAISA", "projeto_mae": "CIDADE DA SAÚDE", "responsavel": "Lucas", "descricao": "Complexo contempla: Poupatempo Saúde, TEA, UPA, Banco de Alimentos, NUPE, Bombeiro\n- UPA FAISA transferida para UPA CRAISA\n- UPA será a primeira obra do complexo\n- Área complexo = 40.000m²", "localizacao": "Av. dos Estados, 2195 - Parque Central, Santo André - SP, 09210-580", "escala": "Edifício", "categoria": "Saúde", "secretaria": "Secretaria da Saúde", "ficha_tecnica": "Área construida: 1.500 m²", "fonte_recurso": "Desenvolve SP", "orcamento_raw": "R$ 9.000.000,00", "orcamento_num": 9000000.0, "modelo_contratacao": "Semi integrada", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "01/04/2027", "entrega": "01/04/2028", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Elaborar projeto básico", "etapa": "Projeto Básico", "responsavel": "Lucas, Fábio", "data_reuniao": "29/08/2026", "acao": "- Foi definido que a UPA será a primeira obra do complexo Cidade da Saúde.\n- O paisagismo do entorno imediato do UPA será da FONTE 1.\n- Tapume deve caracterizar que iniciamos a implantação Cidade da Saúde.\n- Utilizar modelos de projetos como forma de agilizar elaboração do projeto básico.", "devolutiva": "", "prazo": "13/09/2026", "status": "MONITORAR"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Projeto", "etapa": "Projeto Básico", "responsavel": "Lucas, Fábio", "data_reuniao": "02/10/2026", "acao": "- Utilizar referencia de UPA de Itapetininga\n- Estruturar projetos necessário", "devolutiva": "", "prazo": "13/09/2026", "status": "ATENÇÃO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Sondagem", "etapa": "Projeto Básico", "responsavel": "Fábio, Lucas", "data_reuniao": "09/10/2026", "acao": "Sondagem detectou que nível de água entre -1,4 e -2,0m de profundidade.\nDetectou camada inicial de 1 metro de entrulho/aterro", "devolutiva": "Ponto de atenção para utilização de estacas profundas, com custo mais elevado que o convencional", "prazo": "09/10/2026", "status": "CONCLUÍDO"}, {"id": null, "id_raw": "#N/A", "projeto": "UPA CRAISA, BOMBEIRO, POUPATEMPO DA SAÚDE, TEACOLHE, BANCO DE ALIMENTOS", "assunto": "CRAISA Apresentação", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Lucas", "data_reuniao": "20/10/2026", "acao": "Reunião com Donizete, responsável pelo CRAISA.\nSolicitou acesso caminhões, conforme ACESSO 5 (existente)\nSolicitou área de estacionamento caminhoes de feirantes.\nEstudar área para usina reciclagem.\nConfirmou que área é alagadiça.", "devolutiva": "Rever implantação com as diretrizes solicitadas pelo CRAISA", "prazo": "26/10/2026", "status": "ATENÇÃO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Reunião Saúde", "etapa": "Anteprojeto", "responsavel": "Fábio, Lucas, Maryluce", "data_reuniao": "20/10/2026", "acao": "Agendar reunião com Secretaria de Saúde para validação da UPA", "devolutiva": "", "prazo": "23/10/2026", "status": "ATENÇÃO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Desmembramento Matrícula", "etapa": "Anteprojeto", "responsavel": "Fábio, Lucas, Maryluce", "data_reuniao": "20/10/2026", "acao": "Foi solicitado ao Secretário Jeferson o andamento do processo de desemembramento da matrícula", "devolutiva": "", "prazo": "30/10/2026", "status": "ATENÇÃO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Reunião Compatibilização", "etapa": "Anteprojeto", "responsavel": "Fábio, Lucas, Bruna", "data_reuniao": "20/10/2026", "acao": "Reunião de compatibilização do projeto com KINGLINE.\nFoi apresentado o projeto arquitetonico.\nIremos enviar a ultima implantação conforme reunião do CRAISA (Donisete).", "devolutiva": "Faremos reunião no dia 26/10/2026 referente a cronogramas e pontualidades do projeto", "prazo": "22/10/2026", "status": "CONCLUÍDO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "DOD, ETP e TR", "etapa": "Licitação", "responsavel": "Fábio", "data_reuniao": "19/10/2026", "acao": "Elaborar documentos Documento de Oficialização da Demanda, Estudo Técnico Preliminar, Termo de Referência.", "devolutiva": "", "prazo": "03/11/2026", "status": "ATENÇÃO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Pacote Licitação", "etapa": "Licitação", "responsavel": "Fábio, Lucas, Bruna", "data_reuniao": "27/10/2026", "acao": "Kingline deverá encaminar todos os projetos para licitação. Caso haja ajuste de projetos, apos retorno da analise da CONTRATAÇÃO, será atualizado.", "devolutiva": "", "prazo": "06/11/2026", "status": "CRÍTICO"}]}, {"id": 8, "projeto": "NUPE", "projeto_mae": "CIDADE DA SAÚDE", "responsavel": "Lucas", "descricao": "Atual NUPE será relocado no complexo Cidade da Saúde.\nDefinir implantação", "localizacao": "Av. dos Estados, 2195 - Parque Central, Santo André - SP, 09210-580", "escala": "Edifício", "categoria": "Saúde", "secretaria": "Secretaria da Saúde", "ficha_tecnica": "Área construida: 600 m²", "fonte_recurso": "Desenvolve SP", "orcamento_raw": "R$ 2.250.000,00", "orcamento_num": 2250000.0, "modelo_contratacao": "Semi integrada", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "01/04/2028", "ponto_critico": "Definir se Reforma ou Nova Construção", "status": "ATENÇÃO", "andamento": [{"id": 8, "id_raw": "8", "projeto": "NUPE", "assunto": "Parecer técnico", "etapa": "Captação de recurso", "responsavel": "Bernadete", "data_reuniao": "30/09/2026", "acao": "Solicitado recurso para Desenvolve SP, para projeto e construção de 600m²:\n- NUPE (na Cidade da Saúde) – R$ 2.250.000,00;", "devolutiva": "Parecer enviado para Secretaria da Saúde", "prazo": "06/10/2026", "status": "CONCLUÍDO"}]}, {"id": 9, "projeto": "POUPATEMPO DA SAÚDE", "projeto_mae": "CIDADE DA SAÚDE", "responsavel": "Lucas", "descricao": "- Área complexo = 40.000m²", "localizacao": "Av. dos Estados, 2195 - Parque Central, Santo André - SP, 09210-580", "escala": "Edifício", "categoria": "Saúde", "secretaria": "Secretaria da Saúde", "ficha_tecnica": "Área construida: 2.500 m²", "fonte_recurso": "Desenvolve SP", "orcamento_raw": "R$ 18.500.000,00", "orcamento_num": 18500000.0, "modelo_contratacao": "Semi integrada", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "01/04/2028", "ponto_critico": "", "status": "ATENÇÃO", "andamento": [{"id": 9, "id_raw": "9", "projeto": "POUPATEMPO DA SAÚDE", "assunto": "Parecer técnico", "etapa": "Captação de recurso", "responsavel": "Bernadete", "data_reuniao": "30/09/2026", "acao": "Solicitado recurso para Desenvolve SP, para projeto e construção de Policlinica de 3.500m²:\n- R$ 26.000.000,00\n- Poupatempo 2.500m²\n- Teacolhe 1.000m²", "devolutiva": "Parecer enviado para Secretaria da Saúde", "prazo": "06/10/2026", "status": "CONCLUÍDO"}, {"id": null, "id_raw": "#N/A", "projeto": "UPA CRAISA, BOMBEIRO, POUPATEMPO DA SAÚDE, TEACOLHE, BANCO DE ALIMENTOS", "assunto": "CRAISA Apresentação", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Lucas", "data_reuniao": "20/10/2026", "acao": "Reunião com Donizete, responsável pelo CRAISA.\nSolicitou acesso caminhões, conforme ACESSO 5 (existente)\nSolicitou área de estacionamento caminhoes de feirantes.\nEstudar área para usina reciclagem.\nConfirmou que área é alagadiça.", "devolutiva": "Rever implantação com as diretrizes solicitadas pelo CRAISA", "prazo": "26/10/2026", "status": "ATENÇÃO"}]}, {"id": 10, "projeto": "TEACOLHE", "projeto_mae": "CIDADE DA SAÚDE", "responsavel": "Lucas", "descricao": "Policlinica: Poupatempo + Teacolhe\n- Área complexo = 40.000m²", "localizacao": "Av. dos Estados, 2195 - Parque Central, Santo André - SP, 09210-580", "escala": "Edifício", "categoria": "Saúde", "secretaria": "Secretaria da Saúde", "ficha_tecnica": "Área construida: 1.000 m²", "fonte_recurso": "Desenvolve SP", "orcamento_raw": "R$ 7.500.000,00", "orcamento_num": 7500000.0, "modelo_contratacao": "Semi integrada", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "01/04/2028", "ponto_critico": "", "status": "ATENÇÃO", "andamento": [{"id": 10, "id_raw": "10", "projeto": "TEACOLHE", "assunto": "Parecer técnico", "etapa": "Captação de recurso", "responsavel": "Bernadete", "data_reuniao": "30/09/2026", "acao": "Solicitado recurso para Desenvolve SP (R$ 26.000.000,00), para projeto e construção de Policlinica de 3.500m²:\n- Poupatempo 2.500m² (R$18.500.000,00)\n- Teacolhe 1.000m² (R$7.500.000,00)", "devolutiva": "Parecer enviado para Secretaria da Saúde", "prazo": "06/10/2026", "status": "CONCLUÍDO"}, {"id": null, "id_raw": "#N/A", "projeto": "UPA CRAISA, BOMBEIRO, POUPATEMPO DA SAÚDE, TEACOLHE, BANCO DE ALIMENTOS", "assunto": "CRAISA Apresentação", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Lucas", "data_reuniao": "20/10/2026", "acao": "Reunião com Donizete, responsável pelo CRAISA.\nSolicitou acesso caminhões, conforme ACESSO 5 (existente)\nSolicitou área de estacionamento caminhoes de feirantes.\nEstudar área para usina reciclagem.\nConfirmou que área é alagadiça.", "devolutiva": "Rever implantação com as diretrizes solicitadas pelo CRAISA", "prazo": "26/10/2026", "status": "ATENÇÃO"}]}, {"id": 11, "projeto": "BANCO DE ALIMENTOS", "projeto_mae": "CIDADE DA SAÚDE", "responsavel": "Lucas", "descricao": "Complexo contempla: Poupatempo Saúde, TEA, UPA, Banco de Alimentos, NUPE, Bombeiro.\n- Área complexo = 40.000m²", "localizacao": "Av. dos Estados, 2195 - Parque Central, Santo André - SP, 09210-580", "escala": "Edifício", "categoria": "Não definida", "secretaria": "Não definida", "ficha_tecnica": "Área construida: 1.000 m²", "fonte_recurso": "Não definida", "orcamento_raw": "0.0", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "ATENÇÃO", "andamento": [{"id": null, "id_raw": "#N/A", "projeto": "UPA CRAISA, BOMBEIRO, POUPATEMPO DA SAÚDE, TEACOLHE, BANCO DE ALIMENTOS", "assunto": "CRAISA Apresentação", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Lucas", "data_reuniao": "20/10/2026", "acao": "Reunião com Donizete, responsável pelo CRAISA.\nSolicitou acesso caminhões, conforme ACESSO 5 (existente)\nSolicitou área de estacionamento caminhoes de feirantes.\nEstudar área para usina reciclagem.\nConfirmou que área é alagadiça.", "devolutiva": "Rever implantação com as diretrizes solicitadas pelo CRAISA", "prazo": "26/10/2026", "status": "ATENÇÃO"}]}, {"id": 12, "projeto": "BOMBEIRO", "projeto_mae": "CIDADE DA SAÚDE", "responsavel": "Fábio", "descricao": "Construção de base Bombeiro no CRAISA\n- Área complexo = 40.000m²", "localizacao": "Av. dos Estados, 2195 - Parque Central, Santo André - SP, 09210-580", "escala": "Edifício", "categoria": "Segurança", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Área construida: 500 m²", "fonte_recurso": "Não definida", "orcamento_raw": "0.0", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "ATENÇÃO", "andamento": [{"id": null, "id_raw": "#N/A", "projeto": "UPA CRAISA, BOMBEIRO, POUPATEMPO DA SAÚDE, TEACOLHE, BANCO DE ALIMENTOS", "assunto": "CRAISA Apresentação", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Lucas", "data_reuniao": "20/10/2026", "acao": "Reunião com Donizete, responsável pelo CRAISA.\nSolicitou acesso caminhões, conforme ACESSO 5 (existente)\nSolicitou área de estacionamento caminhoes de feirantes.\nEstudar área para usina reciclagem.\nConfirmou que área é alagadiça.", "devolutiva": "Rever implantação com as diretrizes solicitadas pelo CRAISA", "prazo": "26/10/2026", "status": "ATENÇÃO"}, {"id": 12, "id_raw": "12", "projeto": "BOMBEIRO", "assunto": "Implantação", "etapa": "Projeto Básico", "responsavel": "Lucas", "data_reuniao": "28/10/2026", "acao": "Gerar implantação de projeto. \nAgendar reunião com responsável pela Base para validar implantação.", "devolutiva": "", "prazo": "06/11/2026", "status": "MONITORAR"}, {"id": 12, "id_raw": "12", "projeto": "BOMBEIRO", "assunto": "Orçamento", "etapa": "Projeto Básico", "responsavel": "Lucas", "data_reuniao": "28/10/2026", "acao": "Orçar projeto. Será utilizado Fonte 1.", "devolutiva": "", "prazo": "06/11/2026", "status": "MONITORAR"}]}, {"id": 13, "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "projeto_mae": "PLANO DE REQUALIFICAÇÃO DO CENTRO", "responsavel": "Fábio", "descricao": "Rebaixo da Av. XV de Novembro entre os trechos da Rua das Figueiras e Viaduto ACISA", "localizacao": "Av. José Antônio de Almeida Amazonas - Vila Guiomar, Santo André - SP", "escala": "Infraestrutura Urbana", "categoria": "Mobilidade", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Extensão: 400 m de via", "fonte_recurso": "Desenvolve SP e \nFonte Própria", "orcamento_raw": "R$ 120.000.000,00", "orcamento_num": 120000000.0, "modelo_contratacao": "Integral", "desenv_projeto": "15/11/2026", "publicacao_edital": "01/11/2026", "ordem_servico": "01/04/2027", "entrega": "01/04/2028", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Analisar licencialmento ambiental", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Mayra", "data_reuniao": "16/09/2026", "acao": "Mayra avaliou o projeto mostrando não haver necessidade do licenciamento.\nAguardando confirmação SEMASA.\nMayra ira enviar o projeto para formalizar dispensa de licenciamento", "devolutiva": "Enviado para Fernanda Longhini Ferreira (SEMASA)", "prazo": "08/10/2026", "status": "CONCLUÍDO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Sondagem", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Mayra", "data_reuniao": "16/09/2026", "acao": "Avaliar sondagem para confirmar dispensa de autorização para rebaixar lençol freatico.", "devolutiva": "Em análise, sondagem apresentou que o nível de água esta em média a -4m do nível da rua atual.\nO rebaixamento será em torno de 6m, ocasionando rebaixo do lençol freático.", "prazo": "09/10/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Supressão arbórea", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Mayra", "data_reuniao": "16/09/2026", "acao": "Solicitar cadastramento de supressão de arbórea", "devolutiva": "", "prazo": "16/10/2026", "status": "MONITORAR"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Projeto paisagismo", "etapa": "Urbanismo", "responsavel": "Fábio", "data_reuniao": "16/09/2026", "acao": "Elaborar projeto de urbanismo e paisagismo para o eixo Av. Amazonas.\nPaisagismo e mobiliario devem atender ao novo padrão (Oliveira Lima)", "devolutiva": "", "prazo": "16/10/2026", "status": "MONITORAR"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Dispensa de licenciamento ambiental", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio", "data_reuniao": "09/10/2026", "acao": "Verificar com Fernanda (SEMASA) documento referente a dispensa de licenciamento ambiental", "devolutiva": "Há necessidade de licenciamento por ser obra viária.\nO desvio da canalização também é passível de licenciamento.\nConsultar o SP Águas face mudança na canalização e tempo de recorrência, mas eles podem entender que não precisaria de nova outorga.", "prazo": "15/10/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "DOD, ETP e TR", "etapa": "Licitação", "responsavel": "Fábio", "data_reuniao": "09/10/2026", "acao": "Elaborar documentos Documento de Oficialização da Demanda, Estudo Técnico Preliminar, Termo de Referência.", "devolutiva": "", "prazo": "16/10/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Planilha Orçamentária", "etapa": "Licitação", "responsavel": "Fábio", "data_reuniao": "09/10/2026", "acao": "Solicitado orçamento para KINGLINE (Geovanna). \nOrçamento não pode ultrapassar de R$ 90 milhões.", "devolutiva": "Geovanna enviará no inicio da semana do dia 19/10", "prazo": "19/10/2026", "status": "CRÍTICO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "2º Medição", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "14/10/2026", "acao": "Entrega de documentos de 2º Medição", "devolutiva": "Geovanna e Luiz entregaram documentos impressos", "prazo": "14/10/2026", "status": "CONCLUÍDO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Drenagem", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "16/10/2026", "acao": "Verificar com Nilson (Drenagem) os impacto do desvio do Córrego dos Cemitérios", "devolutiva": "Equipe de drenagem solicitou projeto para analise criteriosa.\nDesvio deverá ser suave.\nColetor da Rua das Fiqueiras deverá transpor trincheira.\nNecessário reservatório de retenção.", "prazo": "21/10/2026", "status": "CONCLUÍDO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Desvio de Corrego", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "20/10/2026", "acao": "Aguardar respostas refererente as diretrizes de drenagem", "devolutiva": "", "prazo": "26/10/2026", "status": "MONITORAR"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Instruções para licenciamento", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Glen", "data_reuniao": "16/10/2026", "acao": "Fernanda irá orientar como dar entrada no licenciamento via sistema e quais documentos encaminhar", "devolutiva": "Fernanda apresentou passo a passo de como dar entrada no licenciamento via ACTOS", "prazo": "28/10/2026", "status": "CONCLUÍDO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Projeto Licitação", "etapa": "Licitação", "responsavel": "Fábio", "data_reuniao": "28/10/2026", "acao": "Entrega projeto pela Kingline", "devolutiva": "", "prazo": "15/11/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Roteiro de Licenciamento", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Glen", "data_reuniao": "28/10/2026", "acao": "Glen deverá preencher solicitação de roteiro de licenciamento via Actos", "devolutiva": "Processo: 187280.2026\nGlen responsável preenchimento\nAndré responsável legal", "prazo": "29/10/2026", "status": "CONCLUÍDO"}]}, {"id": 14, "projeto": "ESCOLA DE OURO (ATRIUM)", "projeto_mae": "NÃO INDICADO", "responsavel": "Lucas", "descricao": "Centro profissionalizante no Shopping Atrium, em frente ao Poupatempo da Saúde: \nculinaria, manicure, cabelereiro, artesanato, costura.\n1,4 mi", "localizacao": "Rua Giovanni Battista Pirelli, 155 - Vila Homero Thon, Santo André - SP, 09111-340", "escala": "Edifício", "categoria": "Educação", "secretaria": "Secretaria de Educação", "ficha_tecnica": "", "fonte_recurso": "Shopping Atrium", "orcamento_raw": "R$ 2.000.000,00", "orcamento_num": 2000000.0, "modelo_contratacao": "Shopping Atrium + Chamamento Público", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 14, "id_raw": "14", "projeto": "ESCOLA DE OURO (ATRIUM)", "assunto": "Chamamento Público", "etapa": "Estudo de Viabilidade", "responsavel": "Lucas", "data_reuniao": "27/10/2026", "acao": "Verfiricar com Alexandra processo de chamamento público para custear mobiliário", "devolutiva": "", "prazo": "03/11/2026", "status": "MONITORAR"}]}, {"id": 15, "projeto": "ALTEAMENTO SANTOS DUMONT", "projeto_mae": "AV. SANTOS DUMONT", "responsavel": "Ricardo", "descricao": "Alteamentos da Av. Santos Dumont", "localizacao": "Praça Quatorze Bis - Vila Vilma, Santo André - SP, 09015-330", "escala": "Infraestrutura Urbana", "categoria": "Mobilidade", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "29/10/2026", "ponto_critico": "", "status": "CONCLUÍDO", "andamento": []}, {"id": 16, "projeto": "CORREDOR AV. SANTOS DUMONT - FASE II", "projeto_mae": "AV. SANTOS DUMONT", "responsavel": "Ricardo", "descricao": "Fase II da Av. Santos Dumont", "localizacao": "Praça Quatorze Bis - Vila Vilma, Santo André - SP, 09015-330", "escala": "Infraestrutura Urbana", "categoria": "Mobilidade", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 17, "projeto": "JARDIM LINEAR TRANSPETRO", "projeto_mae": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "responsavel": "Lucas", "descricao": "Estudo de parque linear da faixa da Transpetro no trecho Utinga, elaborado FSA", "localizacao": "R. Medina, 39 - Parque Oratório, Santo André - SP, 09250-540", "escala": "Infraestrutura Urbana", "categoria": "Áreas Verdes", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 18, "projeto": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "projeto_mae": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "responsavel": "Fábio", "descricao": "Anel clicloviario ligando os principais eixos de áreas verdes da cidade", "localizacao": "", "escala": "Não definida", "categoria": "Não definida", "secretaria": "Não definida", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 19, "projeto": "CONEXÃO GUARARÁ", "projeto_mae": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "responsavel": "Daniel", "descricao": "Interligação viária entre Av. Pedro Américo e Av. Dos Estados, ao longo do Ribeirção Guarará", "localizacao": "Av. Pedro Américo - Vila Homero Thon, Santo André - SP, 09015-330", "escala": "Infraestrutura Urbana", "categoria": "Mobilidade", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 20, "projeto": "REVITALIZAÇÃO ESTRADA VILA PARANAPIACABA", "projeto_mae": "NÃO DEFINIDO", "responsavel": "Bernadete", "descricao": "Estudo de viabilidade para revitalização de estrada Vila Paranapiacaba.\nCriar ciclovia paralela ao leito carroçavel.", "localizacao": "Estrada Vila de Paranapiacaba - Paranapiacaba, Santo André - SP", "escala": "Infraestrutura Urbana", "categoria": "Mobilidade", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 21, "projeto": "RESERVATÓRIO ERATO E PARQUE ESPONJA", "projeto_mae": "NÃO DEFINIDO", "responsavel": "Daniel", "descricao": "Acompanhamento de elaboração do calculo hídrico junto ao DMO/SEMASA.\nAdequar projeto padrão CAF\nElaborar projeto do Parque Clima", "localizacao": "Praça Quatorze Bis - Vila Vilma, Santo André - SP, 09015-330", "escala": "Infraestrutura Urbana", "categoria": "Drenagem", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 22, "projeto": "CORREDOR TAIOCA FASE 1", "projeto_mae": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "responsavel": "Douglas", "descricao": "Revisar orçamento existente, subtraindo o trecho em execução pelo DMV/SMSU e incorporando corredor verde e demais melhorias previstas", "localizacao": "R. Marginal Dos Meninos, 1 - Jardim Stella, Santo André - SP, 09185-420", "escala": "Infraestrutura Urbana", "categoria": "Viário", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 23, "projeto": "AMPLIAÇÃO CHM E AVSSA", "projeto_mae": "NÃO DEFINIDO", "responsavel": "Lucas", "descricao": "Ampliação de ambulatório do CHM, totalizando 20 consultórios.\nPrever pavimento inferior para locar \"Rosinhas\" (AVSSA)", "localizacao": "Tv. Apeninos, 163-77 - Vila Santa Teresa, Santo André - SP, 09030-380", "escala": "Edifício", "categoria": "Saúde", "secretaria": "Secretaria da Saúde", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 24, "projeto": "PASSARELA CITE", "projeto_mae": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "responsavel": "Fábio", "descricao": "Passarela de integração entre CITE, Linha 20 Metro, Estação Pref. Celso Daniel", "localizacao": "R. Itambé, 87 - Centro, Santo André - SP, 09015-300", "escala": "Infraestrutura Urbana", "categoria": "Mobilidade", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 25, "projeto": "DELEGACIA DA MULHER - VM - PMP", "projeto_mae": "DDM - VEM MARIA - PATRULHA MARIA DA PENHA", "responsavel": "Ivana, Bernadete", "descricao": "Projeto de delagacia em imovel para locação, Vem Maria e Patrulha Maria da Penha", "localizacao": "Rua Joaquim Tavora", "escala": "Edifício", "categoria": "Segurança", "secretaria": "Secretaria de Segurança Cidadã", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "CRÍTICO", "andamento": []}, {"id": 26, "projeto": "CASA DA MULHER BRASILEIRA", "projeto_mae": "NÃO DEFINIDO", "responsavel": "Ivana", "descricao": "Projeto arquitetônico para Casa da Mulher Brasileira", "localizacao": "", "escala": "Edifício", "categoria": "Assistência Social", "secretaria": "Secretaria de Segurança Cidadã", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 27, "projeto": "LEI DAS CALÇADAS", "projeto_mae": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "responsavel": "Ivana", "descricao": "Minuta de Lei: Monitorar andamento do PA nº 21.089/2023", "localizacao": "", "escala": "Programa", "categoria": "Mobilidade", "secretaria": "Secretaria de Mobilidade Urbano", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "0.0", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 28, "projeto": "ANEXO CANDIDO PORTINARI", "projeto_mae": "SEMENTES DO FUTURO", "responsavel": "À definir", "descricao": "Reforma de anexo.", "localizacao": "R. São Tomás Mouro, 107 - Sítio dos Vianas, São Bernardo do Campo - SP, 09171-690", "escala": "Edifício", "categoria": "Educação", "secretaria": "Secretaria de Educação", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "0.0", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 29, "projeto": "REFORMA CENFORP", "projeto_mae": "SEMENTES DO FUTURO", "responsavel": "À definir", "descricao": "Reforma do CENFORP, inserindo novos espaços de carater inovador", "localizacao": "R. Tirol, 05 - Parque das Nações, Santo André - SP, 09241-010", "escala": "Edifício", "categoria": "Educação", "secretaria": "Secretaria de Educação", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "0.0", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 30, "projeto": "REFORMA  EMEIEF PROF. NICOLAU MORAES BARROS", "projeto_mae": "SEMENTES DO FUTURO", "responsavel": "À definir", "descricao": "Reforma", "localizacao": "R. Hatsuey Motomura, S/N - Silveira, Santo André - SP, 09110-080", "escala": "Edifício", "categoria": "Educação", "secretaria": "Secretaria de Educação", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "0.0", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 31, "projeto": "REFORMA EMEIEF CARLOS DRUMMOND DE ANDRADE", "projeto_mae": "SEMENTES DO FUTURO", "responsavel": "À definir", "descricao": "Reforma", "localizacao": "R. Hatsuey Motomura - Silveira, Santo André - SP, 09110-080", "escala": "Edifício", "categoria": "Educação", "secretaria": "Secretaria de Educação", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "0.0", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 32, "projeto": "SABINA", "projeto_mae": "SEMENTES DO FUTURO", "responsavel": "À definir", "descricao": "Reforma", "localizacao": "8FC9+CM - R. Juquiá, s/n - Vila Eldizia, Santo André - SP, 09181-730", "escala": "Edifício", "categoria": "Educação", "secretaria": "Secretaria de Educação", "ficha_tecnica": "", "fonte_recurso": "Não definida", "orcamento_raw": "0.0", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 33, "projeto": "CAPS III - AD", "projeto_mae": "NÃO DEFINIDO", "responsavel": "Fábio", "descricao": "Definir nova área para relocar CAPS da Rua Venezuela.", "localizacao": "", "escala": "Edifício", "categoria": "Saúde", "secretaria": "Secretaria da Saúde", "ficha_tecnica": "Área construída: 600m²", "fonte_recurso": "Desenvolve SP", "orcamento_raw": "R$ 3.206.000,00", "orcamento_num": 3206000.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 33, "id_raw": "33", "projeto": "CAPS III - AD", "assunto": "Estudo Viabilidade", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "29/08/2026", "acao": "- Sem recursos definido\n- Ver com Ricardo áreas próximas centro para implantação", "devolutiva": "Recurso Desenvolve SP", "prazo": "06/09/2026", "status": "CONCLUÍDO"}, {"id": 33, "id_raw": "33", "projeto": "CAPS III - AD", "assunto": "Parecer técnico", "etapa": "Captação de recurso", "responsavel": "Bernadete", "data_reuniao": "30/09/2026", "acao": "Solicitado recurso para Desenvolve SP, para projeto e construção de 600m²:\n-CAPS AD ÁLCOOL E DROGAS (encontrar terreno) – R$ 3.206.000,00.", "devolutiva": "Parecer enviado para Secretaria da Saúde", "prazo": "06/10/2026", "status": "CONCLUÍDO"}, {"id": 33, "id_raw": "33", "projeto": "CAPS III - AD", "assunto": "Prospectar terreno", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "30/09/2026", "acao": "Verificar terreno público na região central.\nVerificar com Ricardo se há áreas disponiveis nesta região.", "devolutiva": "Utilizar terreno próximo a Praça Fábio Castravelli", "prazo": "14/10/2026", "status": "CONCLUÍDO"}, {"id": 33, "id_raw": "33", "projeto": "CAPS III - AD", "assunto": "Implatação", "etapa": "Estudo Preliminar", "responsavel": "Fábio, Lucas", "data_reuniao": "28/10/2026", "acao": "Implantar projeto modelo (Ministério da Saúde) no terreno, prevendo área para Casa da Mulher Brasileira", "devolutiva": "", "prazo": "06/11/2026", "status": "ATENÇÃO"}]}, {"id": 34, "projeto": "CAMPO DO STELLA FUTEBOL CLUBE", "projeto_mae": "NÃO DEFINIDO", "responsavel": "Fábio", "descricao": "Projeto de arquibancada, vestiários, sala para tecnica para transmissão jogo.\nEstudar um novo equipamento no local onde acontecem os ensaios da escola de samba.\nIntegrar com áreas verdes do entorno (Viela da Felicidade)", "localizacao": "Rua Piramboia, 439 - Jardim Stella, Santo André - SP, 09185-410", "escala": "Edifício", "categoria": "Esporte", "secretaria": "Secretaria de Esporte e Prática Esportiva", "ficha_tecnica": "Área terreno 10.000m²", "fonte_recurso": "Emenda Parlamentar", "orcamento_raw": "R$ 2.500.000,00", "orcamento_num": 2500000.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 34, "id_raw": "34", "projeto": "CAMPO DO STELLA FUTEBOL CLUBE", "assunto": "Elaboração estudo inicial", "etapa": "Estudo de viabilidade", "responsavel": "Fábio", "data_reuniao": "02/10/2026", "acao": "- Glen apresentou a demanda para estudo de arquibancada em campo do Stella.\n- Recurso virá de emendas\n- Fábio irá estudar", "devolutiva": "", "prazo": "09/10/2026", "status": "MONITORAR"}, {"id": 34, "id_raw": "34", "projeto": "CAMPO DO STELLA FUTEBOL CLUBE", "assunto": "Analisar área", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "05/10/2026", "acao": "Analisar terreno para estudo de viabilidade e agendar reunião com o responsável do campo", "devolutiva": "Estudo e apresentação realizada", "prazo": "21/10/2026", "status": "CONCLUÍDO"}]}, {"id": 35, "projeto": "REQUALIFICAÇÃO RUA SENADOR FLAQUER", "projeto_mae": "PLANO DE REQUALIFICAÇÃO DO CENTRO", "responsavel": "Fábio", "descricao": "Plano de requalificação da região central da cidade. \nRequalificação Rua Senador Flaquer\nObservação: mobiliario urbana considerar em outra etapa/recurso", "localizacao": "R. Sen. Flaquer, 459 - Centro, Santo André - SP, 09010-160", "escala": "Urbana", "categoria": "Planejamento Urbano", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Extensão: 1 km de via", "fonte_recurso": "Caixa", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": 35, "id_raw": "35", "projeto": "REQUALIFICAÇÃO RUA SENADOR FLAQUER", "assunto": "Entrega de projetos: Infraestrutura e Planilhas", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "14/10/2026", "acao": "Entrega de projetos para licitação: Infraestrutura e Planilhas", "devolutiva": "", "prazo": "18/12/2026", "status": "MONITORAR"}]}, {"id": 36, "projeto": "VIADUTO UTINGA", "projeto_mae": "Programa CAF II", "responsavel": "Ricardo", "descricao": "Construção de viaduto sobre a Av. do Estado, no cruzamento da Av. da Paz., com 1 alça em cada sentido. Similar aos viadutos do complexo Terezinha.", "localizacao": "Av. dos Estados, 2132", "escala": "Infraestrutura Urbana", "categoria": "Viário", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Extensão: 2x 600 m de via", "fonte_recurso": "CAF", "orcamento_raw": "R$ 140.000.000,00", "orcamento_num": 140000000.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 37, "projeto": "REBAIXAMENTO PERIMETRAL", "projeto_mae": "Programa CAF II", "responsavel": "Ricardo", "descricao": "Complemento de rebaixo da Perimetral", "localizacao": "Centro, Santo André - SP, 09015-330", "escala": "Infraestrutura Urbana", "categoria": "Viário", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Extensão: 1 km de via", "fonte_recurso": "CAF", "orcamento_raw": "R$ 180.000.000,00", "orcamento_num": 180000000.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": null, "id_raw": "#N/A", "projeto": "REVITALIZAÇÃO DE PRAÇAS E PARQUES, CENTRAL DE TRIAGEM DE RESÍDUOS RECICLÁVEIS, REBAIXAMENTO PERIMETRAL", "assunto": "Reunião CAF", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Ricardo", "data_reuniao": "20/10/2026", "acao": "Apresentar propostas para CAF.", "devolutiva": "Houve interesse. \nFoi apontado que o programa deve ter carater de intervenção urbana como um todo e não como execuções de obra de arte.", "prazo": "22/10/2026", "status": "CONCLUÍDO"}]}, {"id": 38, "projeto": "CENTRAL DE TRIAGEM DE RESÍDUOS RECICLÁVEIS", "projeto_mae": "Programa CAF II", "responsavel": "Ricardo", "descricao": "Implantação da Central de Triagem de Resíduos Recicláveis no Município de Santo André", "localizacao": "Av. Sertãozinho, 925 - RP2 (Regiões de Planejamento), Mauá - SP, 09370-841", "escala": "Edifício", "categoria": "Meio Ambiente", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Sem informações", "fonte_recurso": "CAF", "orcamento_raw": "R$ 19.000.000,00", "orcamento_num": 19000000.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": null, "id_raw": "#N/A", "projeto": "REVITALIZAÇÃO DE PRAÇAS E PARQUES, CENTRAL DE TRIAGEM DE RESÍDUOS RECICLÁVEIS, REBAIXAMENTO PERIMETRAL", "assunto": "Reunião CAF", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Ricardo", "data_reuniao": "20/10/2026", "acao": "Apresentar propostas para CAF.", "devolutiva": "Houve interesse. \nFoi apontado que o programa deve ter carater de intervenção urbana como um todo e não como execuções de obra de arte.", "prazo": "22/10/2026", "status": "CONCLUÍDO"}]}, {"id": 39, "projeto": "REVITALIZAÇÃO DE PRAÇAS E PARQUES", "projeto_mae": "Programa CAF II", "responsavel": "Ricardo", "descricao": "Revitalização de praças e parques estratégicas", "localizacao": "Santo André", "escala": "Urbana", "categoria": "Áreas Verdes", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Sem informações", "fonte_recurso": "CAF", "orcamento_raw": "R$ 16.000.000,00", "orcamento_num": 16000000.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": [{"id": null, "id_raw": "#N/A", "projeto": "REVITALIZAÇÃO DE PRAÇAS E PARQUES, CENTRAL DE TRIAGEM DE RESÍDUOS RECICLÁVEIS, REBAIXAMENTO PERIMETRAL", "assunto": "Reunião CAF", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Ricardo", "data_reuniao": "20/10/2026", "acao": "Apresentar propostas para CAF.", "devolutiva": "Houve interesse. \nFoi apontado que o programa deve ter carater de intervenção urbana como um todo e não como execuções de obra de arte.", "prazo": "22/10/2026", "status": "CONCLUÍDO"}]}, {"id": 40, "projeto": "CENTRO POP (ASSAI)", "projeto_mae": "NÃO DEFINIDO", "responsavel": "Ricardo", "descricao": "Centro POP próximo Assai", "localizacao": "", "escala": "Edifício", "categoria": "Assistência Social", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Sem informações", "fonte_recurso": "à definir", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 41, "projeto": "COBERTURA BRUNO DANIEL", "projeto_mae": "NÃO DEFINIDO", "responsavel": "À definir", "descricao": "Construção cobertura do estadio Bruno Daniel", "localizacao": "", "escala": "Edifício", "categoria": "Esporte", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Sem informações", "fonte_recurso": "à definir", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 42, "projeto": "MANUAL PRAÇAS PMG", "projeto_mae": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "responsavel": "À definir", "descricao": "Manual para intervenções em praças pequenas, médias e grandes", "localizacao": "", "escala": "Programa", "categoria": "Áreas Verdes", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Sem informações", "fonte_recurso": "à definir", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}, {"id": 43, "projeto": "REQUALIFICAÇÃO DE PRAÇAS", "projeto_mae": "CIRCUITO VERDE DE MOBILIDADE ATIVA", "responsavel": "À definir", "descricao": "Requalificação de 10 praças (a definir)", "localizacao": "", "escala": "Urbana", "categoria": "Áreas Verdes", "secretaria": "Secretaria de Infraestrutura e Obras", "ficha_tecnica": "Sem informações", "fonte_recurso": "à definir", "orcamento_raw": "Não informado", "orcamento_num": 0.0, "modelo_contratacao": "A definir", "desenv_projeto": "", "publicacao_edital": "", "ordem_servico": "", "entrega": "", "ponto_critico": "", "status": "MONITORAR", "andamento": []}];
+const rawAndamentos = [{"id": 1, "id_raw": "1", "projeto": "SUPER URGENCIA", "assunto": "Projeto", "etapa": "Projeto Executivo", "responsavel": "Ivana", "data_reuniao": "25/08/2026", "acao": "Elaborar projeto de inserção urbana, considerando a acessibilidade", "devolutiva": "", "prazo": "01/09/2026", "status": "MONITORAR"}, {"id": 1, "id_raw": "1", "projeto": "SUPER URGENCIA", "assunto": "Projeto", "etapa": "Projeto Executivo", "responsavel": "Bernadete", "data_reuniao": "25/08/2026", "acao": "Elaborar projeto de elétrica e mandar para obra", "devolutiva": "", "prazo": "", "status": "MONITORAR"}, {"id": 1, "id_raw": "1", "projeto": "SUPER URGENCIA", "assunto": "Termo de Referência", "etapa": "Compras", "responsavel": "Jaqueline", "data_reuniao": "25/08/2026", "acao": "Elaborar Termo de Referência para aquisição de mobiliário e equipamento médico", "devolutiva": "", "prazo": "", "status": "MONITORAR"}, {"id": 1, "id_raw": "1", "projeto": "SUPER URGENCIA", "assunto": "Acompanhamento de obra", "etapa": "", "responsavel": "Bernadete", "data_reuniao": "25/08/2026", "acao": "Acompanhar obra junto à contratada execução da cobertura e das instalações elétricas", "devolutiva": "", "prazo": "16/11/2026", "status": "MONITORAR"}, {"id": 2, "id_raw": "2", "projeto": "SUPER ESPECIALIDADES", "assunto": "Assinatura Termo de Cooperação", "etapa": "Termo de Cooperação", "responsavel": "Bernadete, Jaqueline, Maryluce", "data_reuniao": "25/08/2026", "acao": "Aguardar assinatura do T.C. para elaboração do projeto de comunicação visual especial do equipamento SUPER", "devolutiva": "", "prazo": "", "status": "MONITORAR"}, {"id": 2, "id_raw": "2", "projeto": "SUPER ESPECIALIDADES", "assunto": "Monitorar Termo de Cooperação", "etapa": "Termo de Cooperação", "responsavel": "Maryluce, André, Gilvan", "data_reuniao": "", "acao": "Monitorar a análise do Termo de Cooperação pela Faculdade de Medicina do ABC e a Secretaria de Saúde", "devolutiva": "", "prazo": "14/08/2026", "status": "CRÍTICO"}, {"id": 3, "id_raw": "3", "projeto": "SEMENTES DO FUTURO", "assunto": "Desenvolvimento de estudo de viabilidade", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "25/08/2026", "acao": "Fazer estudo de layout conforme diretrizes da Sec. Educação para implantação nos galpões da Atento.\n- Enviar para Fábio (Macla) para análise", "devolutiva": "Layout preliminar enviado ao proprietário Fábio.\nAguardando devolutiva quanto ao custo aluguel x obra", "prazo": "28/09/2026", "status": "CONCLUÍDO"}, {"id": 3, "id_raw": "3", "projeto": "SEMENTES DO FUTURO", "assunto": "Prospecção de área", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "25/08/2026", "acao": "Fazer pesquisa de outras áreas como Plano B caso haja negativa.", "devolutiva": "", "prazo": "28/09/2026", "status": "MONITORAR"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Elaborar projeto básico", "etapa": "Projeto Básico", "responsavel": "Lucas, Fábio", "data_reuniao": "29/08/2026", "acao": "- Foi definido que a UPA será a primeira obra do complexo Cidade da Saúde.\n- O paisagismo do entorno imediato do UPA será da FONTE 1.\n- Tapume deve caracterizar que iniciamos a implantação Cidade da Saúde.\n- Utilizar modelos de projetos como forma de agilizar elaboração do projeto básico.", "devolutiva": "", "prazo": "13/09/2026", "status": "MONITORAR"}, {"id": 6, "id_raw": "6", "projeto": "NEXUS", "assunto": "Ordem de Serviço", "etapa": "Obra", "responsavel": "Jaqueline", "data_reuniao": "29/08/2026", "acao": "- O.S. para dezembro de 2026. \n- Prever tapume.", "devolutiva": "", "prazo": "06/09/2026", "status": "MONITORAR"}, {"id": 33, "id_raw": "33", "projeto": "CAPS III - AD", "assunto": "Estudo Viabilidade", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "29/08/2026", "acao": "- Sem recursos definido\n- Ver com Ricardo áreas próximas centro para implantação", "devolutiva": "Recurso Desenvolve SP", "prazo": "06/09/2026", "status": "CONCLUÍDO"}, {"id": 34, "id_raw": "34", "projeto": "CAMPO DO STELLA FUTEBOL CLUBE", "assunto": "Elaboração estudo inicial", "etapa": "Estudo de viabilidade", "responsavel": "Fábio", "data_reuniao": "02/10/2026", "acao": "- Glen apresentou a demanda para estudo de arquibancada em campo do Stella.\n- Recurso virá de emendas\n- Fábio irá estudar", "devolutiva": "", "prazo": "09/10/2026", "status": "MONITORAR"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Projeto", "etapa": "Projeto Básico", "responsavel": "Lucas, Fábio", "data_reuniao": "02/10/2026", "acao": "- Utilizar referencia de UPA de Itapetininga\n- Estruturar projetos necessário", "devolutiva": "", "prazo": "13/09/2026", "status": "ATENÇÃO"}, {"id": 3, "id_raw": "3", "projeto": "SEMENTES DO FUTURO", "assunto": "Reunião", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "06/10/2026", "acao": "Reunião realizada com Fabio (Macla) e Naura, juntamente com Alan e Karla da Secretaria de Educação.\nFoi apresentado estivamativa de valores do custo obra (civil + mobiliário) = R$ 13 milhões.\nFábio e Naura irão fazer o estudo de valores Aluguel x Investimento para um modelo de contratação Built to Suit (BTS).", "devolutiva": "", "prazo": "09/10/2026", "status": "ATENÇÃO"}, {"id": 8, "id_raw": "8", "projeto": "NUPE", "assunto": "Parecer técnico", "etapa": "Captação de recurso", "responsavel": "Bernadete", "data_reuniao": "30/09/2026", "acao": "Solicitado recurso para Desenvolve SP, para projeto e construção de 600m²:\n- NUPE (na Cidade da Saúde) – R$ 2.250.000,00;", "devolutiva": "Parecer enviado para Secretaria da Saúde", "prazo": "06/10/2026", "status": "CONCLUÍDO"}, {"id": 9, "id_raw": "9", "projeto": "POUPATEMPO DA SAÚDE", "assunto": "Parecer técnico", "etapa": "Captação de recurso", "responsavel": "Bernadete", "data_reuniao": "30/09/2026", "acao": "Solicitado recurso para Desenvolve SP, para projeto e construção de Policlinica de 3.500m²:\n- R$ 26.000.000,00\n- Poupatempo 2.500m²\n- Teacolhe 1.000m²", "devolutiva": "Parecer enviado para Secretaria da Saúde", "prazo": "06/10/2026", "status": "CONCLUÍDO"}, {"id": 10, "id_raw": "10", "projeto": "TEACOLHE", "assunto": "Parecer técnico", "etapa": "Captação de recurso", "responsavel": "Bernadete", "data_reuniao": "30/09/2026", "acao": "Solicitado recurso para Desenvolve SP (R$ 26.000.000,00), para projeto e construção de Policlinica de 3.500m²:\n- Poupatempo 2.500m² (R$18.500.000,00)\n- Teacolhe 1.000m² (R$7.500.000,00)", "devolutiva": "Parecer enviado para Secretaria da Saúde", "prazo": "06/10/2026", "status": "CONCLUÍDO"}, {"id": 33, "id_raw": "33", "projeto": "CAPS III - AD", "assunto": "Parecer técnico", "etapa": "Captação de recurso", "responsavel": "Bernadete", "data_reuniao": "30/09/2026", "acao": "Solicitado recurso para Desenvolve SP, para projeto e construção de 600m²:\n-CAPS AD ÁLCOOL E DROGAS (encontrar terreno) – R$ 3.206.000,00.", "devolutiva": "Parecer enviado para Secretaria da Saúde", "prazo": "06/10/2026", "status": "CONCLUÍDO"}, {"id": 33, "id_raw": "33", "projeto": "CAPS III - AD", "assunto": "Prospectar terreno", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "30/09/2026", "acao": "Verificar terreno público na região central.\nVerificar com Ricardo se há áreas disponiveis nesta região.", "devolutiva": "Utilizar terreno próximo a Praça Fábio Castravelli", "prazo": "14/10/2026", "status": "CONCLUÍDO"}, {"id": 4, "id_raw": "4", "projeto": "PLANO DE REQUALIFICAÇÃO CENTRO - PROJETOS", "assunto": "Cooperação técnica", "etapa": "Cooperação Técnica", "responsavel": "Bernadete, Fábio", "data_reuniao": "08/10/2026", "acao": "Realizado reunião com Paula e Mariana do curso de Arquitetura da universidade Mauá.\nProposta de cooperação técnica nos levantamentos/diagnósticos do centro\nDe 09 a 13/11 - semana de arquitetura.\nFazer reunião até 26/10", "devolutiva": "Reunião agendada para dia 09/11.\nLocal: CITE\nHorário: 09h ao 12h", "prazo": "09/11/2026", "status": "MONITORAR"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Analisar licencialmento ambiental", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Mayra", "data_reuniao": "16/09/2026", "acao": "Mayra avaliou o projeto mostrando não haver necessidade do licenciamento.\nAguardando confirmação SEMASA.\nMayra ira enviar o projeto para formalizar dispensa de licenciamento", "devolutiva": "Enviado para Fernanda Longhini Ferreira (SEMASA)", "prazo": "08/10/2026", "status": "CONCLUÍDO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Sondagem", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Mayra", "data_reuniao": "16/09/2026", "acao": "Avaliar sondagem para confirmar dispensa de autorização para rebaixar lençol freatico.", "devolutiva": "Em análise, sondagem apresentou que o nível de água esta em média a -4m do nível da rua atual.\nO rebaixamento será em torno de 6m, ocasionando rebaixo do lençol freático.", "prazo": "09/10/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Supressão arbórea", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Mayra", "data_reuniao": "16/09/2026", "acao": "Solicitar cadastramento de supressão de arbórea", "devolutiva": "", "prazo": "16/10/2026", "status": "MONITORAR"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Projeto paisagismo", "etapa": "Urbanismo", "responsavel": "Fábio", "data_reuniao": "16/09/2026", "acao": "Elaborar projeto de urbanismo e paisagismo para o eixo Av. Amazonas.\nPaisagismo e mobiliario devem atender ao novo padrão (Oliveira Lima)", "devolutiva": "", "prazo": "16/10/2026", "status": "MONITORAR"}, {"id": 34, "id_raw": "34", "projeto": "CAMPO DO STELLA FUTEBOL CLUBE", "assunto": "Analisar área", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio", "data_reuniao": "05/10/2026", "acao": "Analisar terreno para estudo de viabilidade e agendar reunião com o responsável do campo", "devolutiva": "Estudo e apresentação realizada", "prazo": "21/10/2026", "status": "CONCLUÍDO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Dispensa de licenciamento ambiental", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio", "data_reuniao": "09/10/2026", "acao": "Verificar com Fernanda (SEMASA) documento referente a dispensa de licenciamento ambiental", "devolutiva": "Há necessidade de licenciamento por ser obra viária.\nO desvio da canalização também é passível de licenciamento.\nConsultar o SP Águas face mudança na canalização e tempo de recorrência, mas eles podem entender que não precisaria de nova outorga.", "prazo": "15/10/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "DOD, ETP e TR", "etapa": "Licitação", "responsavel": "Fábio", "data_reuniao": "09/10/2026", "acao": "Elaborar documentos Documento de Oficialização da Demanda, Estudo Técnico Preliminar, Termo de Referência.", "devolutiva": "", "prazo": "16/10/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Planilha Orçamentária", "etapa": "Licitação", "responsavel": "Fábio", "data_reuniao": "09/10/2026", "acao": "Solicitado orçamento para KINGLINE (Geovanna). \nOrçamento não pode ultrapassar de R$ 90 milhões.", "devolutiva": "Geovanna enviará no inicio da semana do dia 19/10", "prazo": "19/10/2026", "status": "CRÍTICO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Sondagem", "etapa": "Projeto Básico", "responsavel": "Fábio, Lucas", "data_reuniao": "09/10/2026", "acao": "Sondagem detectou que nível de água entre -1,4 e -2,0m de profundidade.\nDetectou camada inicial de 1 metro de entrulho/aterro", "devolutiva": "Ponto de atenção para utilização de estacas profundas, com custo mais elevado que o convencional", "prazo": "09/10/2026", "status": "CONCLUÍDO"}, {"id": null, "id_raw": "#N/A", "projeto": "DELEGACIA DA MULHER", "assunto": "Viabilidade execução", "etapa": "Estudo de Viabilidade", "responsavel": "Bernadete, Jaqueline, Ivana", "data_reuniao": "13/10/2026", "acao": "Foi apresentado ao proprietário valores para executar obra nos moldes aluguel x investimento, para um modelo de contratação Built to Suit (BTS).\nProprietário colocou como limite até R$ 200 mil em investimento.", "devolutiva": "", "prazo": "16/10/2026", "status": "CRÍTICO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "2º Medição", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "14/10/2026", "acao": "Entrega de documentos de 2º Medição", "devolutiva": "Geovanna e Luiz entregaram documentos impressos", "prazo": "14/10/2026", "status": "CONCLUÍDO"}, {"id": 5, "id_raw": "5", "projeto": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "assunto": "Entrega de projetos: Piso e Cobertura", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "14/10/2026", "acao": "Entrega de projetos para licitação: Piso e Cobertura.", "devolutiva": "", "prazo": "06/11/2026", "status": "MONITORAR"}, {"id": 5, "id_raw": "5", "projeto": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "assunto": "Entrega de projetos: Paisagismo e Mobiliário", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "14/10/2026", "acao": "Entrega de projetos para licitação: Paisagismo e Mobiliário", "devolutiva": "", "prazo": "30/11/2026", "status": "MONITORAR"}, {"id": 35, "id_raw": "35", "projeto": "REQUALIFICAÇÃO RUA SENADOR FLAQUER", "assunto": "Entrega de projetos: Infraestrutura e Planilhas", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "14/10/2026", "acao": "Entrega de projetos para licitação: Infraestrutura e Planilhas", "devolutiva": "", "prazo": "18/12/2026", "status": "MONITORAR"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Drenagem", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "16/10/2026", "acao": "Verificar com Nilson (Drenagem) os impacto do desvio do Córrego dos Cemitérios", "devolutiva": "Equipe de drenagem solicitou projeto para analise criteriosa.\nDesvio deverá ser suave.\nColetor da Rua das Fiqueiras deverá transpor trincheira.\nNecessário reservatório de retenção.", "prazo": "21/10/2026", "status": "CONCLUÍDO"}, {"id": null, "id_raw": "#N/A", "projeto": "UPA CRAISA, BOMBEIRO, POUPATEMPO DA SAÚDE, TEACOLHE, BANCO DE ALIMENTOS", "assunto": "CRAISA Apresentação", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Lucas", "data_reuniao": "20/10/2026", "acao": "Reunião com Donizete, responsável pelo CRAISA.\nSolicitou acesso caminhões, conforme ACESSO 5 (existente)\nSolicitou área de estacionamento caminhoes de feirantes.\nEstudar área para usina reciclagem.\nConfirmou que área é alagadiça.", "devolutiva": "Rever implantação com as diretrizes solicitadas pelo CRAISA", "prazo": "26/10/2026", "status": "ATENÇÃO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Reunião Saúde", "etapa": "Anteprojeto", "responsavel": "Fábio, Lucas, Maryluce", "data_reuniao": "20/10/2026", "acao": "Agendar reunião com Secretaria de Saúde para validação da UPA", "devolutiva": "", "prazo": "23/10/2026", "status": "ATENÇÃO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Desmembramento Matrícula", "etapa": "Anteprojeto", "responsavel": "Fábio, Lucas, Maryluce", "data_reuniao": "20/10/2026", "acao": "Foi solicitado ao Secretário Jeferson o andamento do processo de desemembramento da matrícula", "devolutiva": "", "prazo": "30/10/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Desvio de Corrego", "etapa": "Anteprojeto", "responsavel": "Fábio", "data_reuniao": "20/10/2026", "acao": "Aguardar respostas refererente as diretrizes de drenagem", "devolutiva": "", "prazo": "26/10/2026", "status": "MONITORAR"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Instruções para licenciamento", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Glen", "data_reuniao": "16/10/2026", "acao": "Fernanda irá orientar como dar entrada no licenciamento via sistema e quais documentos encaminhar", "devolutiva": "Fernanda apresentou passo a passo de como dar entrada no licenciamento via ACTOS", "prazo": "28/10/2026", "status": "CONCLUÍDO"}, {"id": null, "id_raw": "#N/A", "projeto": "REVITALIZAÇÃO DE PRAÇAS E PARQUES, CENTRAL DE TRIAGEM DE RESÍDUOS RECICLÁVEIS, REBAIXAMENTO PERIMETRAL", "assunto": "Reunião CAF", "etapa": "Estudo de Viabilidade", "responsavel": "Fábio, Ricardo", "data_reuniao": "20/10/2026", "acao": "Apresentar propostas para CAF.", "devolutiva": "Houve interesse. \nFoi apontado que o programa deve ter carater de intervenção urbana como um todo e não como execuções de obra de arte.", "prazo": "22/10/2026", "status": "CONCLUÍDO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Reunião Compatibilização", "etapa": "Anteprojeto", "responsavel": "Fábio, Lucas, Bruna", "data_reuniao": "20/10/2026", "acao": "Reunião de compatibilização do projeto com KINGLINE.\nFoi apresentado o projeto arquitetonico.\nIremos enviar a ultima implantação conforme reunião do CRAISA (Donisete).", "devolutiva": "Faremos reunião no dia 26/10/2026 referente a cronogramas e pontualidades do projeto", "prazo": "22/10/2026", "status": "CONCLUÍDO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "DOD, ETP e TR", "etapa": "Licitação", "responsavel": "Fábio", "data_reuniao": "19/10/2026", "acao": "Elaborar documentos Documento de Oficialização da Demanda, Estudo Técnico Preliminar, Termo de Referência.", "devolutiva": "", "prazo": "03/11/2026", "status": "ATENÇÃO"}, {"id": 14, "id_raw": "14", "projeto": "ESCOLA DE OURO (ATRIUM)", "assunto": "Chamamento Público", "etapa": "Estudo de Viabilidade", "responsavel": "Lucas", "data_reuniao": "27/10/2026", "acao": "Verfiricar com Alexandra processo de chamamento público para custear mobiliário", "devolutiva": "", "prazo": "03/11/2026", "status": "MONITORAR"}, {"id": 33, "id_raw": "33", "projeto": "CAPS III - AD", "assunto": "Implatação", "etapa": "Estudo Preliminar", "responsavel": "Fábio, Lucas", "data_reuniao": "28/10/2026", "acao": "Implantar projeto modelo (Ministério da Saúde) no terreno, prevendo área para Casa da Mulher Brasileira", "devolutiva": "", "prazo": "06/11/2026", "status": "ATENÇÃO"}, {"id": 12, "id_raw": "12", "projeto": "BOMBEIRO", "assunto": "Implantação", "etapa": "Projeto Básico", "responsavel": "Lucas", "data_reuniao": "28/10/2026", "acao": "Gerar implantação de projeto. \nAgendar reunião com responsável pela Base para validar implantação.", "devolutiva": "", "prazo": "06/11/2026", "status": "MONITORAR"}, {"id": 12, "id_raw": "12", "projeto": "BOMBEIRO", "assunto": "Orçamento", "etapa": "Projeto Básico", "responsavel": "Lucas", "data_reuniao": "28/10/2026", "acao": "Orçar projeto. Será utilizado Fonte 1.", "devolutiva": "", "prazo": "06/11/2026", "status": "MONITORAR"}, {"id": 2, "id_raw": "2", "projeto": "SUPER ESPECIALIDADES", "assunto": "Entrega", "etapa": "Obra", "responsavel": "Bernadete", "data_reuniao": "28/10/2026", "acao": "Previsão de entrega da obra", "devolutiva": "", "prazo": "19/11/2026", "status": "MONITORAR"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Projeto Licitação", "etapa": "Licitação", "responsavel": "Fábio", "data_reuniao": "28/10/2026", "acao": "Entrega projeto pela Kingline", "devolutiva": "", "prazo": "15/11/2026", "status": "ATENÇÃO"}, {"id": 13, "id_raw": "13", "projeto": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "assunto": "Roteiro de Licenciamento", "etapa": "Licenciamento Ambiental", "responsavel": "Fábio, Glen", "data_reuniao": "28/10/2026", "acao": "Glen deverá preencher solicitação de roteiro de licenciamento via Actos", "devolutiva": "Processo: 187280.2026\nGlen responsável preenchimento\nAndré responsável legal", "prazo": "29/10/2026", "status": "CONCLUÍDO"}, {"id": 7, "id_raw": "7", "projeto": "UPA CRAISA", "assunto": "Pacote Licitação", "etapa": "Licitação", "responsavel": "Fábio, Lucas, Bruna", "data_reuniao": "27/10/2026", "acao": "Kingline deverá encaminar todos os projetos para licitação. Caso haja ajuste de projetos, apos retorno da analise da CONTRATAÇÃO, será atualizado.", "devolutiva": "", "prazo": "06/11/2026", "status": "CRÍTICO"}];
+const rawCalendarEvents = [{"date": "2026-08-14", "display_date": "14/08/2026", "type": "PRAZO", "project_id": 2, "project": "SUPER ESPECIALIDADES", "title": "Prazo: Monitorar Termo de Cooperação", "details": "Monitorar a análise do Termo de Cooperação pela Faculdade de Medicina do ABC e a Secretaria de Saúde", "devolutiva": "", "responsible": "Maryluce, André, Gilvan", "status": "CRÍTICO"}, {"date": "2026-08-25", "display_date": "25/08/2026", "type": "REUNIÃO", "project_id": 1, "project": "SUPER URGENCIA", "title": "Reunião: Projeto", "details": "Elaborar projeto de inserção urbana, considerando a acessibilidade", "devolutiva": "", "responsible": "Ivana", "status": "MONITORAR"}, {"date": "2026-08-25", "display_date": "25/08/2026", "type": "REUNIÃO", "project_id": 1, "project": "SUPER URGENCIA", "title": "Reunião: Projeto", "details": "Elaborar projeto de elétrica e mandar para obra", "devolutiva": "", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "2026-08-25", "display_date": "25/08/2026", "type": "REUNIÃO", "project_id": 1, "project": "SUPER URGENCIA", "title": "Reunião: Termo de Referência", "details": "Elaborar Termo de Referência para aquisição de mobiliário e equipamento médico", "devolutiva": "", "responsible": "Jaqueline", "status": "MONITORAR"}, {"date": "2026-08-25", "display_date": "25/08/2026", "type": "REUNIÃO", "project_id": 1, "project": "SUPER URGENCIA", "title": "Reunião: Acompanhamento de obra", "details": "Acompanhar obra junto à contratada execução da cobertura e das instalações elétricas", "devolutiva": "", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "2026-08-25", "display_date": "25/08/2026", "type": "REUNIÃO", "project_id": 2, "project": "SUPER ESPECIALIDADES", "title": "Reunião: Assinatura Termo de Cooperação", "details": "Aguardar assinatura do T.C. para elaboração do projeto de comunicação visual especial do equipamento SUPER", "devolutiva": "", "responsible": "Bernadete, Jaqueline, Maryluce", "status": "MONITORAR"}, {"date": "2026-08-25", "display_date": "25/08/2026", "type": "REUNIÃO", "project_id": 3, "project": "SEMENTES DO FUTURO", "title": "Reunião: Desenvolvimento de estudo de viabilidade", "details": "Fazer estudo de layout conforme diretrizes da Sec. Educação para implantação nos galpões da Atento.\n- Enviar para Fábio (Macla) para análise", "devolutiva": "Layout preliminar enviado ao proprietário Fábio.\nAguardando devolutiva quanto ao custo aluguel x obra", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-08-25", "display_date": "25/08/2026", "type": "REUNIÃO", "project_id": 3, "project": "SEMENTES DO FUTURO", "title": "Reunião: Prospecção de área", "details": "Fazer pesquisa de outras áreas como Plano B caso haja negativa.", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-08-29", "display_date": "29/08/2026", "type": "REUNIÃO", "project_id": 7, "project": "UPA CRAISA", "title": "Reunião: Elaborar projeto básico", "details": "- Foi definido que a UPA será a primeira obra do complexo Cidade da Saúde.\n- O paisagismo do entorno imediato do UPA será da FONTE 1.\n- Tapume deve caracterizar que iniciamos a implantação Cidade da Saúde.\n- Utilizar modelos de projetos como forma de agilizar elaboração do projeto básico.", "devolutiva": "", "responsible": "Lucas, Fábio", "status": "MONITORAR"}, {"date": "2026-08-29", "display_date": "29/08/2026", "type": "REUNIÃO", "project_id": 6, "project": "NEXUS", "title": "Reunião: Ordem de Serviço", "details": "- O.S. para dezembro de 2026. \n- Prever tapume.", "devolutiva": "", "responsible": "Jaqueline", "status": "MONITORAR"}, {"date": "2026-08-29", "display_date": "29/08/2026", "type": "REUNIÃO", "project_id": 33, "project": "CAPS III - AD", "title": "Reunião: Estudo Viabilidade", "details": "- Sem recursos definido\n- Ver com Ricardo áreas próximas centro para implantação", "devolutiva": "Recurso Desenvolve SP", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-09-01", "display_date": "01/09/2026", "type": "PRAZO", "project_id": 1, "project": "SUPER URGENCIA", "title": "Prazo: Projeto", "details": "Elaborar projeto de inserção urbana, considerando a acessibilidade", "devolutiva": "", "responsible": "Ivana", "status": "MONITORAR"}, {"date": "2026-09-06", "display_date": "06/09/2026", "type": "PRAZO", "project_id": 6, "project": "NEXUS", "title": "Prazo: Ordem de Serviço", "details": "- O.S. para dezembro de 2026. \n- Prever tapume.", "devolutiva": "", "responsible": "Jaqueline", "status": "MONITORAR"}, {"date": "2026-09-06", "display_date": "06/09/2026", "type": "PRAZO", "project_id": 33, "project": "CAPS III - AD", "title": "Prazo: Estudo Viabilidade", "details": "- Sem recursos definido\n- Ver com Ricardo áreas próximas centro para implantação", "devolutiva": "Recurso Desenvolve SP", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-09-13", "display_date": "13/09/2026", "type": "PRAZO", "project_id": 7, "project": "UPA CRAISA", "title": "Prazo: Elaborar projeto básico", "details": "- Foi definido que a UPA será a primeira obra do complexo Cidade da Saúde.\n- O paisagismo do entorno imediato do UPA será da FONTE 1.\n- Tapume deve caracterizar que iniciamos a implantação Cidade da Saúde.\n- Utilizar modelos de projetos como forma de agilizar elaboração do projeto básico.", "devolutiva": "", "responsible": "Lucas, Fábio", "status": "MONITORAR"}, {"date": "2026-09-13", "display_date": "13/09/2026", "type": "PRAZO", "project_id": 7, "project": "UPA CRAISA", "title": "Prazo: Projeto", "details": "- Utilizar referencia de UPA de Itapetininga\n- Estruturar projetos necessário", "devolutiva": "", "responsible": "Lucas, Fábio", "status": "ATENÇÃO"}, {"date": "2026-09-16", "display_date": "16/09/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Analisar licencialmento ambiental", "details": "Mayra avaliou o projeto mostrando não haver necessidade do licenciamento.\nAguardando confirmação SEMASA.\nMayra ira enviar o projeto para formalizar dispensa de licenciamento", "devolutiva": "Enviado para Fernanda Longhini Ferreira (SEMASA)", "responsible": "Fábio, Mayra", "status": "CONCLUÍDO"}, {"date": "2026-09-16", "display_date": "16/09/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Sondagem", "details": "Avaliar sondagem para confirmar dispensa de autorização para rebaixar lençol freatico.", "devolutiva": "Em análise, sondagem apresentou que o nível de água esta em média a -4m do nível da rua atual.\nO rebaixamento será em torno de 6m, ocasionando rebaixo do lençol freático.", "responsible": "Fábio, Mayra", "status": "ATENÇÃO"}, {"date": "2026-09-16", "display_date": "16/09/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Supressão arbórea", "details": "Solicitar cadastramento de supressão de arbórea", "devolutiva": "", "responsible": "Fábio, Mayra", "status": "MONITORAR"}, {"date": "2026-09-16", "display_date": "16/09/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Projeto paisagismo", "details": "Elaborar projeto de urbanismo e paisagismo para o eixo Av. Amazonas.\nPaisagismo e mobiliario devem atender ao novo padrão (Oliveira Lima)", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-09-28", "display_date": "28/09/2026", "type": "PRAZO", "project_id": 3, "project": "SEMENTES DO FUTURO", "title": "Prazo: Desenvolvimento de estudo de viabilidade", "details": "Fazer estudo de layout conforme diretrizes da Sec. Educação para implantação nos galpões da Atento.\n- Enviar para Fábio (Macla) para análise", "devolutiva": "Layout preliminar enviado ao proprietário Fábio.\nAguardando devolutiva quanto ao custo aluguel x obra", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-09-28", "display_date": "28/09/2026", "type": "PRAZO", "project_id": 3, "project": "SEMENTES DO FUTURO", "title": "Prazo: Prospecção de área", "details": "Fazer pesquisa de outras áreas como Plano B caso haja negativa.", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-09-30", "display_date": "30/09/2026", "type": "REUNIÃO", "project_id": 8, "project": "NUPE", "title": "Reunião: Parecer técnico", "details": "Solicitado recurso para Desenvolve SP, para projeto e construção de 600m²:\n- NUPE (na Cidade da Saúde) – R$ 2.250.000,00;", "devolutiva": "Parecer enviado para Secretaria da Saúde", "responsible": "Bernadete", "status": "CONCLUÍDO"}, {"date": "2026-09-30", "display_date": "30/09/2026", "type": "REUNIÃO", "project_id": 9, "project": "POUPATEMPO DA SAÚDE", "title": "Reunião: Parecer técnico", "details": "Solicitado recurso para Desenvolve SP, para projeto e construção de Policlinica de 3.500m²:\n- R$ 26.000.000,00\n- Poupatempo 2.500m²\n- Teacolhe 1.000m²", "devolutiva": "Parecer enviado para Secretaria da Saúde", "responsible": "Bernadete", "status": "CONCLUÍDO"}, {"date": "2026-09-30", "display_date": "30/09/2026", "type": "REUNIÃO", "project_id": 10, "project": "TEACOLHE", "title": "Reunião: Parecer técnico", "details": "Solicitado recurso para Desenvolve SP (R$ 26.000.000,00), para projeto e construção de Policlinica de 3.500m²:\n- Poupatempo 2.500m² (R$18.500.000,00)\n- Teacolhe 1.000m² (R$7.500.000,00)", "devolutiva": "Parecer enviado para Secretaria da Saúde", "responsible": "Bernadete", "status": "CONCLUÍDO"}, {"date": "2026-09-30", "display_date": "30/09/2026", "type": "REUNIÃO", "project_id": 33, "project": "CAPS III - AD", "title": "Reunião: Parecer técnico", "details": "Solicitado recurso para Desenvolve SP, para projeto e construção de 600m²:\n-CAPS AD ÁLCOOL E DROGAS (encontrar terreno) – R$ 3.206.000,00.", "devolutiva": "Parecer enviado para Secretaria da Saúde", "responsible": "Bernadete", "status": "CONCLUÍDO"}, {"date": "2026-09-30", "display_date": "30/09/2026", "type": "REUNIÃO", "project_id": 33, "project": "CAPS III - AD", "title": "Reunião: Prospectar terreno", "details": "Verificar terreno público na região central.\nVerificar com Ricardo se há áreas disponiveis nesta região.", "devolutiva": "Utilizar terreno próximo a Praça Fábio Castravelli", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-10-02", "display_date": "02/10/2026", "type": "REUNIÃO", "project_id": 34, "project": "CAMPO DO STELLA FUTEBOL CLUBE", "title": "Reunião: Elaboração estudo inicial", "details": "- Glen apresentou a demanda para estudo de arquibancada em campo do Stella.\n- Recurso virá de emendas\n- Fábio irá estudar", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-10-02", "display_date": "02/10/2026", "type": "REUNIÃO", "project_id": 7, "project": "UPA CRAISA", "title": "Reunião: Projeto", "details": "- Utilizar referencia de UPA de Itapetininga\n- Estruturar projetos necessário", "devolutiva": "", "responsible": "Lucas, Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-05", "display_date": "05/10/2026", "type": "REUNIÃO", "project_id": 34, "project": "CAMPO DO STELLA FUTEBOL CLUBE", "title": "Reunião: Analisar área", "details": "Analisar terreno para estudo de viabilidade e agendar reunião com o responsável do campo", "devolutiva": "Estudo e apresentação realizada", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-10-06", "display_date": "06/10/2026", "type": "REUNIÃO", "project_id": 3, "project": "SEMENTES DO FUTURO", "title": "Reunião: Reunião", "details": "Reunião realizada com Fabio (Macla) e Naura, juntamente com Alan e Karla da Secretaria de Educação.\nFoi apresentado estivamativa de valores do custo obra (civil + mobiliário) = R$ 13 milhões.\nFábio e Naura irão fazer o estudo de valores Aluguel x Investimento para um modelo de contratação Built to Suit (BTS).", "devolutiva": "", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-06", "display_date": "06/10/2026", "type": "PRAZO", "project_id": 8, "project": "NUPE", "title": "Prazo: Parecer técnico", "details": "Solicitado recurso para Desenvolve SP, para projeto e construção de 600m²:\n- NUPE (na Cidade da Saúde) – R$ 2.250.000,00;", "devolutiva": "Parecer enviado para Secretaria da Saúde", "responsible": "Bernadete", "status": "CONCLUÍDO"}, {"date": "2026-10-06", "display_date": "06/10/2026", "type": "PRAZO", "project_id": 9, "project": "POUPATEMPO DA SAÚDE", "title": "Prazo: Parecer técnico", "details": "Solicitado recurso para Desenvolve SP, para projeto e construção de Policlinica de 3.500m²:\n- R$ 26.000.000,00\n- Poupatempo 2.500m²\n- Teacolhe 1.000m²", "devolutiva": "Parecer enviado para Secretaria da Saúde", "responsible": "Bernadete", "status": "CONCLUÍDO"}, {"date": "2026-10-06", "display_date": "06/10/2026", "type": "PRAZO", "project_id": 10, "project": "TEACOLHE", "title": "Prazo: Parecer técnico", "details": "Solicitado recurso para Desenvolve SP (R$ 26.000.000,00), para projeto e construção de Policlinica de 3.500m²:\n- Poupatempo 2.500m² (R$18.500.000,00)\n- Teacolhe 1.000m² (R$7.500.000,00)", "devolutiva": "Parecer enviado para Secretaria da Saúde", "responsible": "Bernadete", "status": "CONCLUÍDO"}, {"date": "2026-10-06", "display_date": "06/10/2026", "type": "PRAZO", "project_id": 33, "project": "CAPS III - AD", "title": "Prazo: Parecer técnico", "details": "Solicitado recurso para Desenvolve SP, para projeto e construção de 600m²:\n-CAPS AD ÁLCOOL E DROGAS (encontrar terreno) – R$ 3.206.000,00.", "devolutiva": "Parecer enviado para Secretaria da Saúde", "responsible": "Bernadete", "status": "CONCLUÍDO"}, {"date": "2026-10-08", "display_date": "08/10/2026", "type": "REUNIÃO", "project_id": 4, "project": "PLANO DE REQUALIFICAÇÃO CENTRO - PROJETOS", "title": "Reunião: Cooperação técnica", "details": "Realizado reunião com Paula e Mariana do curso de Arquitetura da universidade Mauá.\nProposta de cooperação técnica nos levantamentos/diagnósticos do centro\nDe 09 a 13/11 - semana de arquitetura.\nFazer reunião até 26/10", "devolutiva": "Reunião agendada para dia 09/11.\nLocal: CITE\nHorário: 09h ao 12h", "responsible": "Bernadete, Fábio", "status": "MONITORAR"}, {"date": "2026-10-08", "display_date": "08/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Analisar licencialmento ambiental", "details": "Mayra avaliou o projeto mostrando não haver necessidade do licenciamento.\nAguardando confirmação SEMASA.\nMayra ira enviar o projeto para formalizar dispensa de licenciamento", "devolutiva": "Enviado para Fernanda Longhini Ferreira (SEMASA)", "responsible": "Fábio, Mayra", "status": "CONCLUÍDO"}, {"date": "2026-10-09", "display_date": "09/10/2026", "type": "PRAZO", "project_id": 34, "project": "CAMPO DO STELLA FUTEBOL CLUBE", "title": "Prazo: Elaboração estudo inicial", "details": "- Glen apresentou a demanda para estudo de arquibancada em campo do Stella.\n- Recurso virá de emendas\n- Fábio irá estudar", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-10-09", "display_date": "09/10/2026", "type": "PRAZO", "project_id": 3, "project": "SEMENTES DO FUTURO", "title": "Prazo: Reunião", "details": "Reunião realizada com Fabio (Macla) e Naura, juntamente com Alan e Karla da Secretaria de Educação.\nFoi apresentado estivamativa de valores do custo obra (civil + mobiliário) = R$ 13 milhões.\nFábio e Naura irão fazer o estudo de valores Aluguel x Investimento para um modelo de contratação Built to Suit (BTS).", "devolutiva": "", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-09", "display_date": "09/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Sondagem", "details": "Avaliar sondagem para confirmar dispensa de autorização para rebaixar lençol freatico.", "devolutiva": "Em análise, sondagem apresentou que o nível de água esta em média a -4m do nível da rua atual.\nO rebaixamento será em torno de 6m, ocasionando rebaixo do lençol freático.", "responsible": "Fábio, Mayra", "status": "ATENÇÃO"}, {"date": "2026-10-09", "display_date": "09/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Dispensa de licenciamento ambiental", "details": "Verificar com Fernanda (SEMASA) documento referente a dispensa de licenciamento ambiental", "devolutiva": "Há necessidade de licenciamento por ser obra viária.\nO desvio da canalização também é passível de licenciamento.\nConsultar o SP Águas face mudança na canalização e tempo de recorrência, mas eles podem entender que não precisaria de nova outorga.", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-09", "display_date": "09/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: DOD, ETP e TR", "details": "Elaborar documentos Documento de Oficialização da Demanda, Estudo Técnico Preliminar, Termo de Referência.", "devolutiva": "", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-09", "display_date": "09/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Planilha Orçamentária", "details": "Solicitado orçamento para KINGLINE (Geovanna). \nOrçamento não pode ultrapassar de R$ 90 milhões.", "devolutiva": "Geovanna enviará no inicio da semana do dia 19/10", "responsible": "Fábio", "status": "CRÍTICO"}, {"date": "2026-10-09", "display_date": "09/10/2026", "type": "PRAZO", "project_id": 7, "project": "UPA CRAISA", "title": "Prazo: Sondagem", "details": "Sondagem detectou que nível de água entre -1,4 e -2,0m de profundidade.\nDetectou camada inicial de 1 metro de entrulho/aterro", "devolutiva": "Ponto de atenção para utilização de estacas profundas, com custo mais elevado que o convencional", "responsible": "Fábio, Lucas", "status": "CONCLUÍDO"}, {"date": "2026-10-09", "display_date": "09/10/2026", "type": "REUNIÃO", "project_id": 7, "project": "UPA CRAISA", "title": "Reunião: Sondagem", "details": "Sondagem detectou que nível de água entre -1,4 e -2,0m de profundidade.\nDetectou camada inicial de 1 metro de entrulho/aterro", "devolutiva": "Ponto de atenção para utilização de estacas profundas, com custo mais elevado que o convencional", "responsible": "Fábio, Lucas", "status": "CONCLUÍDO"}, {"date": "2026-10-13", "display_date": "13/10/2026", "type": "REUNIÃO", "project_id": null, "project": "DELEGACIA DA MULHER", "title": "Reunião: Viabilidade execução", "details": "Foi apresentado ao proprietário valores para executar obra nos moldes aluguel x investimento, para um modelo de contratação Built to Suit (BTS).\nProprietário colocou como limite até R$ 200 mil em investimento.", "devolutiva": "", "responsible": "Bernadete, Jaqueline, Ivana", "status": "CRÍTICO"}, {"date": "2026-10-14", "display_date": "14/10/2026", "type": "PRAZO", "project_id": 33, "project": "CAPS III - AD", "title": "Prazo: Prospectar terreno", "details": "Verificar terreno público na região central.\nVerificar com Ricardo se há áreas disponiveis nesta região.", "devolutiva": "Utilizar terreno próximo a Praça Fábio Castravelli", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-10-14", "display_date": "14/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: 2º Medição", "details": "Entrega de documentos de 2º Medição", "devolutiva": "Geovanna e Luiz entregaram documentos impressos", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-10-14", "display_date": "14/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: 2º Medição", "details": "Entrega de documentos de 2º Medição", "devolutiva": "Geovanna e Luiz entregaram documentos impressos", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-10-14", "display_date": "14/10/2026", "type": "REUNIÃO", "project_id": 5, "project": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "title": "Reunião: Entrega de projetos: Piso e Cobertura", "details": "Entrega de projetos para licitação: Piso e Cobertura.", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-10-14", "display_date": "14/10/2026", "type": "REUNIÃO", "project_id": 5, "project": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "title": "Reunião: Entrega de projetos: Paisagismo e Mobiliário", "details": "Entrega de projetos para licitação: Paisagismo e Mobiliário", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-10-14", "display_date": "14/10/2026", "type": "REUNIÃO", "project_id": 35, "project": "REQUALIFICAÇÃO RUA SENADOR FLAQUER", "title": "Reunião: Entrega de projetos: Infraestrutura e Planilhas", "details": "Entrega de projetos para licitação: Infraestrutura e Planilhas", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-10-15", "display_date": "15/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Dispensa de licenciamento ambiental", "details": "Verificar com Fernanda (SEMASA) documento referente a dispensa de licenciamento ambiental", "devolutiva": "Há necessidade de licenciamento por ser obra viária.\nO desvio da canalização também é passível de licenciamento.\nConsultar o SP Águas face mudança na canalização e tempo de recorrência, mas eles podem entender que não precisaria de nova outorga.", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-16", "display_date": "16/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Supressão arbórea", "details": "Solicitar cadastramento de supressão de arbórea", "devolutiva": "", "responsible": "Fábio, Mayra", "status": "MONITORAR"}, {"date": "2026-10-16", "display_date": "16/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Projeto paisagismo", "details": "Elaborar projeto de urbanismo e paisagismo para o eixo Av. Amazonas.\nPaisagismo e mobiliario devem atender ao novo padrão (Oliveira Lima)", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-10-16", "display_date": "16/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: DOD, ETP e TR", "details": "Elaborar documentos Documento de Oficialização da Demanda, Estudo Técnico Preliminar, Termo de Referência.", "devolutiva": "", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-16", "display_date": "16/10/2026", "type": "PRAZO", "project_id": null, "project": "DELEGACIA DA MULHER", "title": "Prazo: Viabilidade execução", "details": "Foi apresentado ao proprietário valores para executar obra nos moldes aluguel x investimento, para um modelo de contratação Built to Suit (BTS).\nProprietário colocou como limite até R$ 200 mil em investimento.", "devolutiva": "", "responsible": "Bernadete, Jaqueline, Ivana", "status": "CRÍTICO"}, {"date": "2026-10-16", "display_date": "16/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Drenagem", "details": "Verificar com Nilson (Drenagem) os impacto do desvio do Córrego dos Cemitérios", "devolutiva": "Equipe de drenagem solicitou projeto para analise criteriosa.\nDesvio deverá ser suave.\nColetor da Rua das Fiqueiras deverá transpor trincheira.\nNecessário reservatório de retenção.", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-10-16", "display_date": "16/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Instruções para licenciamento", "details": "Fernanda irá orientar como dar entrada no licenciamento via sistema e quais documentos encaminhar", "devolutiva": "Fernanda apresentou passo a passo de como dar entrada no licenciamento via ACTOS", "responsible": "Fábio, Glen", "status": "CONCLUÍDO"}, {"date": "2026-10-19", "display_date": "19/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Planilha Orçamentária", "details": "Solicitado orçamento para KINGLINE (Geovanna). \nOrçamento não pode ultrapassar de R$ 90 milhões.", "devolutiva": "Geovanna enviará no inicio da semana do dia 19/10", "responsible": "Fábio", "status": "CRÍTICO"}, {"date": "2026-10-19", "display_date": "19/10/2026", "type": "REUNIÃO", "project_id": 7, "project": "UPA CRAISA", "title": "Reunião: DOD, ETP e TR", "details": "Elaborar documentos Documento de Oficialização da Demanda, Estudo Técnico Preliminar, Termo de Referência.", "devolutiva": "", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-20", "display_date": "20/10/2026", "type": "REUNIÃO", "project_id": null, "project": "UPA CRAISA, BOMBEIRO, POUPATEMPO DA SAÚDE, TEACOLHE, BANCO DE ALIMENTOS", "title": "Reunião: CRAISA Apresentação", "details": "Reunião com Donizete, responsável pelo CRAISA.\nSolicitou acesso caminhões, conforme ACESSO 5 (existente)\nSolicitou área de estacionamento caminhoes de feirantes.\nEstudar área para usina reciclagem.\nConfirmou que área é alagadiça.", "devolutiva": "Rever implantação com as diretrizes solicitadas pelo CRAISA", "responsible": "Fábio, Lucas", "status": "ATENÇÃO"}, {"date": "2026-10-20", "display_date": "20/10/2026", "type": "REUNIÃO", "project_id": 7, "project": "UPA CRAISA", "title": "Reunião: Reunião Saúde", "details": "Agendar reunião com Secretaria de Saúde para validação da UPA", "devolutiva": "", "responsible": "Fábio, Lucas, Maryluce", "status": "ATENÇÃO"}, {"date": "2026-10-20", "display_date": "20/10/2026", "type": "REUNIÃO", "project_id": 7, "project": "UPA CRAISA", "title": "Reunião: Desmembramento Matrícula", "details": "Foi solicitado ao Secretário Jeferson o andamento do processo de desemembramento da matrícula", "devolutiva": "", "responsible": "Fábio, Lucas, Maryluce", "status": "ATENÇÃO"}, {"date": "2026-10-20", "display_date": "20/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Desvio de Corrego", "details": "Aguardar respostas refererente as diretrizes de drenagem", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-10-20", "display_date": "20/10/2026", "type": "REUNIÃO", "project_id": null, "project": "REVITALIZAÇÃO DE PRAÇAS E PARQUES, CENTRAL DE TRIAGEM DE RESÍDUOS RECICLÁVEIS, REBAIXAMENTO PERIMETRAL", "title": "Reunião: Reunião CAF", "details": "Apresentar propostas para CAF.", "devolutiva": "Houve interesse. \nFoi apontado que o programa deve ter carater de intervenção urbana como um todo e não como execuções de obra de arte.", "responsible": "Fábio, Ricardo", "status": "CONCLUÍDO"}, {"date": "2026-10-20", "display_date": "20/10/2026", "type": "REUNIÃO", "project_id": 7, "project": "UPA CRAISA", "title": "Reunião: Reunião Compatibilização", "details": "Reunião de compatibilização do projeto com KINGLINE.\nFoi apresentado o projeto arquitetonico.\nIremos enviar a ultima implantação conforme reunião do CRAISA (Donisete).", "devolutiva": "Faremos reunião no dia 26/10/2026 referente a cronogramas e pontualidades do projeto", "responsible": "Fábio, Lucas, Bruna", "status": "CONCLUÍDO"}, {"date": "2026-10-21", "display_date": "21/10/2026", "type": "PRAZO", "project_id": 34, "project": "CAMPO DO STELLA FUTEBOL CLUBE", "title": "Prazo: Analisar área", "details": "Analisar terreno para estudo de viabilidade e agendar reunião com o responsável do campo", "devolutiva": "Estudo e apresentação realizada", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-10-21", "display_date": "21/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Drenagem", "details": "Verificar com Nilson (Drenagem) os impacto do desvio do Córrego dos Cemitérios", "devolutiva": "Equipe de drenagem solicitou projeto para analise criteriosa.\nDesvio deverá ser suave.\nColetor da Rua das Fiqueiras deverá transpor trincheira.\nNecessário reservatório de retenção.", "responsible": "Fábio", "status": "CONCLUÍDO"}, {"date": "2026-10-22", "display_date": "22/10/2026", "type": "PRAZO", "project_id": null, "project": "REVITALIZAÇÃO DE PRAÇAS E PARQUES, CENTRAL DE TRIAGEM DE RESÍDUOS RECICLÁVEIS, REBAIXAMENTO PERIMETRAL", "title": "Prazo: Reunião CAF", "details": "Apresentar propostas para CAF.", "devolutiva": "Houve interesse. \nFoi apontado que o programa deve ter carater de intervenção urbana como um todo e não como execuções de obra de arte.", "responsible": "Fábio, Ricardo", "status": "CONCLUÍDO"}, {"date": "2026-10-22", "display_date": "22/10/2026", "type": "PRAZO", "project_id": 7, "project": "UPA CRAISA", "title": "Prazo: Reunião Compatibilização", "details": "Reunião de compatibilização do projeto com KINGLINE.\nFoi apresentado o projeto arquitetonico.\nIremos enviar a ultima implantação conforme reunião do CRAISA (Donisete).", "devolutiva": "Faremos reunião no dia 26/10/2026 referente a cronogramas e pontualidades do projeto", "responsible": "Fábio, Lucas, Bruna", "status": "CONCLUÍDO"}, {"date": "2026-10-23", "display_date": "23/10/2026", "type": "PRAZO", "project_id": 7, "project": "UPA CRAISA", "title": "Prazo: Reunião Saúde", "details": "Agendar reunião com Secretaria de Saúde para validação da UPA", "devolutiva": "", "responsible": "Fábio, Lucas, Maryluce", "status": "ATENÇÃO"}, {"date": "2026-10-26", "display_date": "26/10/2026", "type": "PRAZO", "project_id": null, "project": "UPA CRAISA, BOMBEIRO, POUPATEMPO DA SAÚDE, TEACOLHE, BANCO DE ALIMENTOS", "title": "Prazo: CRAISA Apresentação", "details": "Reunião com Donizete, responsável pelo CRAISA.\nSolicitou acesso caminhões, conforme ACESSO 5 (existente)\nSolicitou área de estacionamento caminhoes de feirantes.\nEstudar área para usina reciclagem.\nConfirmou que área é alagadiça.", "devolutiva": "Rever implantação com as diretrizes solicitadas pelo CRAISA", "responsible": "Fábio, Lucas", "status": "ATENÇÃO"}, {"date": "2026-10-26", "display_date": "26/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Desvio de Corrego", "details": "Aguardar respostas refererente as diretrizes de drenagem", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-10-27", "display_date": "27/10/2026", "type": "REUNIÃO", "project_id": 14, "project": "ESCOLA DE OURO (ATRIUM)", "title": "Reunião: Chamamento Público", "details": "Verfiricar com Alexandra processo de chamamento público para custear mobiliário", "devolutiva": "", "responsible": "Lucas", "status": "MONITORAR"}, {"date": "2026-10-27", "display_date": "27/10/2026", "type": "REUNIÃO", "project_id": 7, "project": "UPA CRAISA", "title": "Reunião: Pacote Licitação", "details": "Kingline deverá encaminar todos os projetos para licitação. Caso haja ajuste de projetos, apos retorno da analise da CONTRATAÇÃO, será atualizado.", "devolutiva": "", "responsible": "Fábio, Lucas, Bruna", "status": "CRÍTICO"}, {"date": "2026-10-28", "display_date": "28/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Instruções para licenciamento", "details": "Fernanda irá orientar como dar entrada no licenciamento via sistema e quais documentos encaminhar", "devolutiva": "Fernanda apresentou passo a passo de como dar entrada no licenciamento via ACTOS", "responsible": "Fábio, Glen", "status": "CONCLUÍDO"}, {"date": "2026-10-28", "display_date": "28/10/2026", "type": "REUNIÃO", "project_id": 33, "project": "CAPS III - AD", "title": "Reunião: Implatação", "details": "Implantar projeto modelo (Ministério da Saúde) no terreno, prevendo área para Casa da Mulher Brasileira", "devolutiva": "", "responsible": "Fábio, Lucas", "status": "ATENÇÃO"}, {"date": "2026-10-28", "display_date": "28/10/2026", "type": "REUNIÃO", "project_id": 12, "project": "BOMBEIRO", "title": "Reunião: Implantação", "details": "Gerar implantação de projeto. \nAgendar reunião com responsável pela Base para validar implantação.", "devolutiva": "", "responsible": "Lucas", "status": "MONITORAR"}, {"date": "2026-10-28", "display_date": "28/10/2026", "type": "REUNIÃO", "project_id": 12, "project": "BOMBEIRO", "title": "Reunião: Orçamento", "details": "Orçar projeto. Será utilizado Fonte 1.", "devolutiva": "", "responsible": "Lucas", "status": "MONITORAR"}, {"date": "2026-10-28", "display_date": "28/10/2026", "type": "REUNIÃO", "project_id": 2, "project": "SUPER ESPECIALIDADES", "title": "Reunião: Entrega", "details": "Previsão de entrega da obra", "devolutiva": "", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "2026-10-28", "display_date": "28/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Projeto Licitação", "details": "Entrega projeto pela Kingline", "devolutiva": "", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-10-28", "display_date": "28/10/2026", "type": "REUNIÃO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Reunião: Roteiro de Licenciamento", "details": "Glen deverá preencher solicitação de roteiro de licenciamento via Actos", "devolutiva": "Processo: 187280.2026\nGlen responsável preenchimento\nAndré responsável legal", "responsible": "Fábio, Glen", "status": "CONCLUÍDO"}, {"date": "2026-10-29", "display_date": "29/10/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Roteiro de Licenciamento", "details": "Glen deverá preencher solicitação de roteiro de licenciamento via Actos", "devolutiva": "Processo: 187280.2026\nGlen responsável preenchimento\nAndré responsável legal", "responsible": "Fábio, Glen", "status": "CONCLUÍDO"}, {"date": "2026-10-29", "display_date": "29/10/2026", "type": "ENTREGA", "project_id": 15, "project": "ALTEAMENTO SANTOS DUMONT", "title": "Previsão de Entrega: ALTEAMENTO SANTOS DUMONT", "details": "Conclusão e entrega da obra. Orçamento: Não informado.", "devolutiva": "", "responsible": "Ricardo", "status": "CONCLUÍDO"}, {"date": "2026-10-30", "display_date": "30/10/2026", "type": "PRAZO", "project_id": 7, "project": "UPA CRAISA", "title": "Prazo: Desmembramento Matrícula", "details": "Foi solicitado ao Secretário Jeferson o andamento do processo de desemembramento da matrícula", "devolutiva": "", "responsible": "Fábio, Lucas, Maryluce", "status": "ATENÇÃO"}, {"date": "2026-11-03", "display_date": "03/11/2026", "type": "PRAZO", "project_id": 7, "project": "UPA CRAISA", "title": "Prazo: DOD, ETP e TR", "details": "Elaborar documentos Documento de Oficialização da Demanda, Estudo Técnico Preliminar, Termo de Referência.", "devolutiva": "", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-11-03", "display_date": "03/11/2026", "type": "PRAZO", "project_id": 14, "project": "ESCOLA DE OURO (ATRIUM)", "title": "Prazo: Chamamento Público", "details": "Verfiricar com Alexandra processo de chamamento público para custear mobiliário", "devolutiva": "", "responsible": "Lucas", "status": "MONITORAR"}, {"date": "2026-11-06", "display_date": "06/11/2026", "type": "PRAZO", "project_id": 5, "project": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "title": "Prazo: Entrega de projetos: Piso e Cobertura", "details": "Entrega de projetos para licitação: Piso e Cobertura.", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-11-06", "display_date": "06/11/2026", "type": "PRAZO", "project_id": 33, "project": "CAPS III - AD", "title": "Prazo: Implatação", "details": "Implantar projeto modelo (Ministério da Saúde) no terreno, prevendo área para Casa da Mulher Brasileira", "devolutiva": "", "responsible": "Fábio, Lucas", "status": "ATENÇÃO"}, {"date": "2026-11-06", "display_date": "06/11/2026", "type": "PRAZO", "project_id": 12, "project": "BOMBEIRO", "title": "Prazo: Implantação", "details": "Gerar implantação de projeto. \nAgendar reunião com responsável pela Base para validar implantação.", "devolutiva": "", "responsible": "Lucas", "status": "MONITORAR"}, {"date": "2026-11-06", "display_date": "06/11/2026", "type": "PRAZO", "project_id": 12, "project": "BOMBEIRO", "title": "Prazo: Orçamento", "details": "Orçar projeto. Será utilizado Fonte 1.", "devolutiva": "", "responsible": "Lucas", "status": "MONITORAR"}, {"date": "2026-11-06", "display_date": "06/11/2026", "type": "PRAZO", "project_id": 7, "project": "UPA CRAISA", "title": "Prazo: Pacote Licitação", "details": "Kingline deverá encaminar todos os projetos para licitação. Caso haja ajuste de projetos, apos retorno da analise da CONTRATAÇÃO, será atualizado.", "devolutiva": "", "responsible": "Fábio, Lucas, Bruna", "status": "CRÍTICO"}, {"date": "2026-11-09", "display_date": "09/11/2026", "type": "PRAZO", "project_id": 4, "project": "PLANO DE REQUALIFICAÇÃO CENTRO - PROJETOS", "title": "Prazo: Cooperação técnica", "details": "Realizado reunião com Paula e Mariana do curso de Arquitetura da universidade Mauá.\nProposta de cooperação técnica nos levantamentos/diagnósticos do centro\nDe 09 a 13/11 - semana de arquitetura.\nFazer reunião até 26/10", "devolutiva": "Reunião agendada para dia 09/11.\nLocal: CITE\nHorário: 09h ao 12h", "responsible": "Bernadete, Fábio", "status": "MONITORAR"}, {"date": "2026-11-15", "display_date": "15/11/2026", "type": "PRAZO", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Prazo: Projeto Licitação", "details": "Entrega projeto pela Kingline", "devolutiva": "", "responsible": "Fábio", "status": "ATENÇÃO"}, {"date": "2026-11-16", "display_date": "16/11/2026", "type": "PRAZO", "project_id": 1, "project": "SUPER URGENCIA", "title": "Prazo: Acompanhamento de obra", "details": "Acompanhar obra junto à contratada execução da cobertura e das instalações elétricas", "devolutiva": "", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "2026-11-19", "display_date": "19/11/2026", "type": "PRAZO", "project_id": 2, "project": "SUPER ESPECIALIDADES", "title": "Prazo: Entrega", "details": "Previsão de entrega da obra", "devolutiva": "", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "2026-11-19", "display_date": "19/11/2026", "type": "ENTREGA", "project_id": 2, "project": "SUPER ESPECIALIDADES", "title": "Previsão de Entrega: SUPER ESPECIALIDADES", "details": "Conclusão e entrega da obra. Orçamento: R$ 3.789.000,00.", "devolutiva": "REPASSE DE VERBA", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "2026-11-30", "display_date": "30/11/2026", "type": "PRAZO", "project_id": 5, "project": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "title": "Prazo: Entrega de projetos: Paisagismo e Mobiliário", "details": "Entrega de projetos para licitação: Paisagismo e Mobiliário", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2026-12-18", "display_date": "18/12/2026", "type": "PRAZO", "project_id": 35, "project": "REQUALIFICAÇÃO RUA SENADOR FLAQUER", "title": "Prazo: Entrega de projetos: Infraestrutura e Planilhas", "details": "Entrega de projetos para licitação: Infraestrutura e Planilhas", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2027-02-01", "display_date": "01/02/2027", "type": "ENTREGA", "project_id": 3, "project": "SEMENTES DO FUTURO", "title": "Previsão de Entrega: SEMENTES DO FUTURO", "details": "Conclusão e entrega da obra. Orçamento: R$ 13.000.000,00.", "devolutiva": "Aguardando definição da Secretaria de Educação junto ao Prefeito para negociações com proprietário", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2027-04-01", "display_date": "01/04/2027", "type": "ENTREGA", "project_id": 1, "project": "SUPER URGENCIA", "title": "Previsão de Entrega: SUPER URGENCIA", "details": "Conclusão e entrega da obra. Orçamento: R$ 7.935.512,88.", "devolutiva": "VERBA\nO.S. 02/2026 \n18/05/26: $3.026.971,35", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "2028-04-01", "display_date": "01/04/2028", "type": "ENTREGA", "project_id": 5, "project": "REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "title": "Previsão de Entrega: REQUALIFICAÇÃO RUA OLIVEIRA LIMA - FASE I", "details": "Conclusão e entrega da obra. Orçamento: R$ 50.000.000,00.", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "2028-04-01", "display_date": "01/04/2028", "type": "ENTREGA", "project_id": 6, "project": "NEXUS", "title": "Previsão de Entrega: NEXUS", "details": "Conclusão e entrega da obra. Orçamento: R$ 14.383.708,74.", "devolutiva": "", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "2028-04-01", "display_date": "01/04/2028", "type": "ENTREGA", "project_id": 7, "project": "UPA CRAISA", "title": "Previsão de Entrega: UPA CRAISA", "details": "Conclusão e entrega da obra. Orçamento: R$ 9.000.000,00.", "devolutiva": "", "responsible": "Lucas", "status": "MONITORAR"}, {"date": "2028-04-01", "display_date": "01/04/2028", "type": "ENTREGA", "project_id": 8, "project": "NUPE", "title": "Previsão de Entrega: NUPE", "details": "Conclusão e entrega da obra. Orçamento: R$ 2.250.000,00.", "devolutiva": "Definir se Reforma ou Nova Construção", "responsible": "Lucas", "status": "ATENÇÃO"}, {"date": "2028-04-01", "display_date": "01/04/2028", "type": "ENTREGA", "project_id": 9, "project": "POUPATEMPO DA SAÚDE", "title": "Previsão de Entrega: POUPATEMPO DA SAÚDE", "details": "Conclusão e entrega da obra. Orçamento: R$ 18.500.000,00.", "devolutiva": "", "responsible": "Lucas", "status": "ATENÇÃO"}, {"date": "2028-04-01", "display_date": "01/04/2028", "type": "ENTREGA", "project_id": 10, "project": "TEACOLHE", "title": "Previsão de Entrega: TEACOLHE", "details": "Conclusão e entrega da obra. Orçamento: R$ 7.500.000,00.", "devolutiva": "", "responsible": "Lucas", "status": "ATENÇÃO"}, {"date": "2028-04-01", "display_date": "01/04/2028", "type": "ENTREGA", "project_id": 13, "project": "REBAIXAMENTO AV. JOSÉ AMAZONAS", "title": "Previsão de Entrega: REBAIXAMENTO AV. JOSÉ AMAZONAS", "details": "Conclusão e entrega da obra. Orçamento: R$ 120.000.000,00.", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}, {"date": "A-0N-01", "display_date": "N/A", "type": "EDITAL", "project_id": 1, "project": "SUPER URGENCIA", "title": "Previsão de Edital: SUPER URGENCIA", "details": "Publicação do Edital de Licitação (ATA DE MANUTENÇÃO). Orçamento: R$ 7.935.512,88.", "devolutiva": "", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "A-0N-01", "display_date": "N/A", "type": "EDITAL", "project_id": 2, "project": "SUPER ESPECIALIDADES", "title": "Previsão de Edital: SUPER ESPECIALIDADES", "details": "Publicação do Edital de Licitação (Aquisição direta pela FUABC + Contrapartida UNINOVE). Orçamento: R$ 3.789.000,00.", "devolutiva": "", "responsible": "Bernadete", "status": "MONITORAR"}, {"date": "A-0N-01", "display_date": "N/A", "type": "EDITAL", "project_id": 3, "project": "SEMENTES DO FUTURO", "title": "Previsão de Edital: SEMENTES DO FUTURO", "details": "Publicação do Edital de Licitação (Built to Suit). Orçamento: R$ 13.000.000,00.", "devolutiva": "", "responsible": "Fábio", "status": "MONITORAR"}];
+
+let currentSlide = 0;
+
+const slides = [
+  {
+    number: "01",
+    pretitle: "Prefeitura Municipal de Santo André • SIO",
+    title: "Relatório Executivo Semanal de Obras",
+    body: `
+      <div class="grid-2" style="height: 100%; align-items: center;">
+        <div>
+          <div style="font-size: 14px; line-height: 1.8; color: var(--text-muted); margin-bottom: 24px;">
+            Acompanhamento semanal de <strong>sexta-feira (04/11/2026)</strong> para os <strong>43 projetos de obras</strong> da Secretaria de Infraestrutura e Obras de Santo André.<br><br>
+            Consolidação das abas <code>PROJETOS</code> e <code>ANDAMENTO</code> da planilha <code>SIO-Controle-R00</code> (Google Drive / Pasta <code>2026-PMSA</code>).
+          </div>
+          <div class="mies-quote">
+            "A estrutura é a espinha dorsal da forma. Menos é mais." — Ludwig Mies van der Rohe
+          </div>
+          <div style="margin-top: 32px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">
+            <strong>Data da Emissão:</strong> 04 de Novembro de 2026 (Sexta-feira)<br>
+            <strong>Investimento Mapeado:</strong> R$ 609.064.221,62 (+R$ 40M em novos aportes)<br>
+            <strong>Ações na Aba ANDAMENTO:</strong> 52 registros de evolução semanal
+          </div>
+        </div>
+        <div style="border-left: 1px solid var(--line-black); padding-left: 40px;">
+          <div class="kpi-card" style="margin-bottom: 16px;">
+            <div class="kpi-label">Novo Capital Global Alocado</div>
+            <div class="kpi-value">R$ 609,1M</div>
+            <div class="kpi-subtext">+R$ 30M Trincheira, +R$ 7,9M UPA Super</div>
+          </div>
+          <div class="kpi-card" style="margin-bottom: 16px;">
+            <div class="kpi-label">Destaque da Semana (Pediatria)</div>
+            <div class="kpi-value alert" style="font-size:22px; color:#000;">ENTREGA 19/11</div>
+            <div class="kpi-subtext">Super Especialidades entra em contagem regressiva</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Acompanhamento de Prazos</div>
+            <div class="kpi-value" style="color: var(--line-black);">111 EVENTOS</div>
+            <div class="kpi-subtext">Grade mensal das principais datas e andamentos</div>
+          </div>
+        </div>
+      </div>
+    `,
+    footer: "Morfologia e Evolução • Santo André 2026"
+  },
+  {
+    number: "02",
+    pretitle: "Aportes Financeiros & Readequação Orçamentária",
+    title: "Salto Orçamentário para R$ 609,1 Milhões",
+    body: `
+      <div class="grid-2">
+        <div class="arch-box">
+          <h3>Novas Dotações e Readequações</h3>
+          <ul class="arch-list">
+            <li>
+              <span><strong>Rebaixamento Av. José Amazonas:</strong> R$ 90M → R$ 120M</span>
+              <span class="val">Desenvolve SP + Própria</span>
+            </li>
+            <li>
+              <span><strong>SUPER URGÊNCIA (UPA Super):</strong> R$ 7.935.512,88</span>
+              <span class="val">Ata Sec. Manutenção</span>
+            </li>
+            <li>
+              <span><strong>Escola de Ouro (Shopping Atrium):</strong> R$ 2.000.000,00</span>
+              <span class="val">Contrapartida Privada</span>
+            </li>
+            <li>
+              <span><strong>SUPER ESPECIALIDADES:</strong> R$ 3.789.000,00</span>
+              <span class="val">FUABC / UNINOVE</span>
+            </li>
+          </ul>
+        </div>
+        <div class="arch-box">
+          <h3>Redistribuição Técnica de Liderança</h3>
+          <p style="font-size: 12px; line-height: 1.8; color: var(--text-black); margin-bottom: 12px;">
+            A planilha formalizou a entrada de <strong>Ricardo</strong> na gestão técnica de 6 grandes projetos:<br>
+            • Os 4 projetos do Programa CAF II (Viaduto Utinga, Rebaixamento Perimetral, Central de Triagem, Praças).<br>
+            • As intervenções viárias da Av. Santos Dumont (Alteamento e Corredor Fase II).<br>
+            Isso reequilibra a carga operacional e reduz os projetos vagos para apenas 5 escolas!
+          </p>
+        </div>
+      </div>
+    `,
+    footer: "Estruturação Orçamentária • Santo André 2026"
+  },
+  {
+    number: "03",
+    pretitle: "Serviço Unificado de Pediatria (SUPER)",
+    title: "Super Urgência e Super Especialidades",
+    body: `
+      <div class="grid-2">
+        <div class="arch-box">
+          <h3>SUPER URGÊNCIA • Prazo 04/2027 (R$ 7,93M)</h3>
+          <p style="font-size: 11px; line-height: 1.6; color: var(--text-muted); margin-bottom: 10px;">
+            Local: Praça IV Centenário, 08 (Centro) • Área: 1.899,64 m²:
+          </p>
+          <ul class="arch-list">
+            <li><span>Ordem de Serviço 02/2026 (18/05/2026)</span><span class="val">R$ 3.026.971,35</span></li>
+            <li><span>Acompanhamento de Cobertura e Elétrica</span><span class="val">Bernadete</span></li>
+            <li><span>Ponto Crítico Declarado</span><span class="val red">VERBA</span></li>
+            <li><span>Previsão de Conclusão Global</span><span class="val">Abril / 2027</span></li>
+          </ul>
+        </div>
+        <div class="arch-box">
+          <h3>SUPER ESPECIALIDADES • Entrega em 19/11/2026!</h3>
+          <p style="font-size: 11px; line-height: 1.6; color: var(--text-muted); margin-bottom: 10px;">
+            Local: Av. Príncipe de Gales, 821 • Área: 2.024,82 m²:
+          </p>
+          <ul class="arch-list">
+            <li><span>Status Atualizado</span><span class="badge monitorar">MONITORAR</span></li>
+            <li><span>Investimento Confirmado</span><span class="val">R$ 3.789.000,00</span></li>
+            <li><span>Fonte</span><span class="val">PSA / FUABC / UNINOVE</span></li>
+            <li><span>Ponto Crítico</span><span class="val red">REPASSE DE VERBA</span></li>
+            <li><span>Entrega da Obra</span><span class="val red">19/11/2026 (20 dias)</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    footer: "Polo Pediátrico Integrado • Urgência e Especialidades"
+  },
+  {
+    number: "04",
+    pretitle: "Infraestrutura Central • Rebaixamento José Amazonas",
+    title: "Avanço no Licenciamento ACTOS & Projeto (R$ 120M)",
+    body: `
+      <div class="grid-2">
+        <div class="arch-box">
+          <h3>Licenciamento Ambiental Digital Protocolado!</h3>
+          <p style="font-size: 12px; line-height: 1.7; color: var(--text-black); margin-bottom: 10px;">
+            Evolução da ata da aba ANDAMENTO (28 e 29/10/2026):<br>
+            • <strong>Processo Formalizado:</strong> Glen e Fábio preencheram a solicitação do roteiro de licenciamento no sistema ACTOS sob o <strong>Processo nº 187280.2026</strong>.<br>
+            • <strong>Responsabilidade:</strong> Glen responsável pelo preenchimento técnico e André como responsável legal.<br>
+            • <strong>Status:</strong> <span class="badge concluido">CONCLUÍDO (29/10)</span>.
+          </p>
+        </div>
+        <div class="arch-box critical-highlight">
+          <h3 style="color: var(--accent-red);">Prazo do Projeto Executivo: 15/11/2026</h3>
+          <p style="font-size: 12px; line-height: 1.7; color: var(--text-black); margin-bottom: 12px;">
+            • <strong>KINGLINE:</strong> Entrega final do projeto executivo e planilhas orçamentárias reajustada para <strong>15/11/2026</strong>.<br>
+            • <strong>Drenagem:</strong> Desvio do Córrego dos Cemitérios e reservatório de amortecimento em fase de cálculo final.<br>
+            • <strong>Status:</strong> <span class="badge atencao">ATENÇÃO</span>.
+          </p>
+        </div>
+      </div>
+    `,
+    footer: "Trincheira Av. José Amazonas • Extensão 400m de via"
+  },
+  {
+    number: "05",
+    pretitle: "Cluster Cidade da Saúde (CRAISA)",
+    title: "Pacote de Licitação da UPA & Desmembramento",
+    body: `
+      <div class="grid-2">
+        <div class="arch-box critical-highlight">
+          <h3 style="color: var(--accent-red);">Alerta Crítico • Pacote Licitação UPA CRAISA</h3>
+          <p style="font-size: 12px; line-height: 1.7; color: var(--text-black); margin-bottom: 10px;">
+            Ata de 27/10/2026 (Fábio, Lucas e Bruna):<br>
+            • A KINGLINE deverá encaminhar todos os projetos executivos para a licitação até <strong>06/11/2026</strong>.<br>
+            • <strong>Status:</strong> <span class="badge critico">CRÍTICO</span>.<br>
+            • <strong>DOD, ETP e TR:</strong> Em finalização sob prazo de <strong>03/11/2026</strong>.
+          </p>
+        </div>
+        <div class="arch-box critical-highlight">
+          <h3 style="color: var(--accent-red);">Desmembramento de Matrícula (Prazo: Hoje!)</h3>
+          <p style="font-size: 12px; line-height: 1.7; color: var(--text-black); margin-bottom: 10px;">
+            • <strong>Ação:</strong> Acompanhamento junto ao Secretário Jeferson para o desmembramento imobiliário da gleba da Cidade da Saúde (40.000 m²).<br>
+            • <strong>Prazo Limite:</strong> <strong>Hoje (04/11/2026)</strong>.<br>
+            • <strong>Status:</strong> <span class="badge atencao">ATENÇÃO</span>.
+          </p>
+        </div>
+      </div>
+    `,
+    footer: "Complexo Hospitalar CRAISA • Regularização Fundiária"
+  },
+  {
+    number: "06",
+    pretitle: "Saúde Mental & Assistência Social",
+    title: "Novo Terreno do CAPS III - AD & DDM",
+    body: `
+      <div class="grid-2">
+        <div class="arch-box">
+          <h3>CAPS III - AD • Gleba Definida!</h3>
+          <p style="font-size: 12px; line-height: 1.7; color: var(--text-black); margin-bottom: 10px;">
+            Evolução de sucesso registrada em 28/10/2026:<br>
+            • <strong>Localização:</strong> Definido terreno público próximo à <strong>Praça Fábio Castravelli</strong> (<span class="badge concluido">CONCLUÍDO</span>).<br>
+            • <strong>Implantação Integrada:</strong> Fábio e Lucas implantarão o projeto modelo do Ministério da Saúde com área reservada para a <strong>Casa da Mulher Brasileira</strong>.<br>
+            • <strong>Prazo:</strong> 06/11/2026 (<span class="badge atencao">ATENÇÃO</span>).
+          </p>
+        </div>
+        <div class="arch-box">
+          <h3>Delegacia da Mulher (DDM - Vem Maria)</h3>
+          <ul class="arch-list">
+            <li><span>Localização</span><span class="val">Rua Joaquim Távora</span></li>
+            <li><span>Programa Integrado</span><span class="val">DDM + Vem Maria + Patrulha</span></li>
+            <li><span>Responsáveis</span><span class="val">Ivana e Bernadete</span></li>
+            <li><span>Escola de Ouro (Atrium)</span><span class="val">Chamamento R$ 2M (03/11)</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    footer: "Equipamentos Sociais e Saúde Mental"
+  },
+  {
+    number: "07",
+    pretitle: "Calendário Executivo de Andamento",
+    title: "Agenda das Principais Datas de Novembro 2026",
+    body: `
+      <div class="grid-2">
+        <div class="arch-box">
+          <h3>Primeira Quinzena de Novembro</h3>
+          <ul class="arch-list">
+            <li><span>03/11: DOD, ETP e TR da UPA CRAISA</span><span class="val red">Terça</span></li>
+            <li><span>03/11: Chamamento Mobiliário Atrium</span><span class="val">Terça</span></li>
+            <li><span>06/11: Pacote de Licitação KINGLINE UPA CRAISA</span><span class="val red">Sexta</span></li>
+            <li><span>06/11: Projetos Piso/Cobertura Rua Oliveira Lima</span><span class="val">Sexta</span></li>
+            <li><span>06/11: Implantação CAPS e Casa da Mulher</span><span class="val">Sexta</span></li>
+            <li><span>09/11: Reunião CITE Parceria Mauá (09h às 12h)</span><span class="val">Segunda</span></li>
+            <li><span>15/11: Entrega Projeto Executivo Trincheira</span><span class="val red">Domingo</span></li>
+          </ul>
+        </div>
+        <div class="arch-box">
+          <h3>Segunda Quinzena de Novembro</h3>
+          <ul class="arch-list">
+            <li><span>16/11: Acompanhamento Cobertura UPA SUPER</span><span class="val">Segunda</span></li>
+            <li><span>19/11: Entrega da Obra SUPER ESPECIALIDADES</span><span class="val red">Quinta</span></li>
+            <li><span>30/11: Projetos Paisagismo e Mobiliário Oliveira Lima</span><span class="val">Segunda</span></li>
+            <li><span>11/2026: Publicação Editais Trincheira e Oliveira Lima</span><span class="val">Licitação</span></li>
+            <li><span>18/12: Projetos Infraestrutura Rua Senador Flaquer</span><span class="val">Caixa</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    footer: "Acompanhamento Cronológico de Prazos e Marcos"
+  },
+  {
+    number: "08",
+    pretitle: "Governança e Equipe Técnica",
+    title: "Distribuição da Carteira entre Gestores SIO",
+    body: `
+      <div class="arch-box">
+        <h3>Quadro de Lotação Atualizado (04/11/2026)</h3>
+        <p style="font-size: 12px; line-height: 1.7; color: var(--text-muted); margin-bottom: 16px;">
+          A formalização de Ricardo no Programa CAF II e Santos Dumont reorganizou a matriz de responsabilidades da secretaria:
+        </p>
+        <div class="grid-2">
+          <ul class="arch-list">
+            <li><span>Fábio (Trincheira, Oliveira Lima, Sementes, Bombeiro)</span><span class="val">13 Projetos</span></li>
+            <li><span>Lucas (Polo Saúde CRAISA e Atrium)</span><span class="val">8 Projetos</span></li>
+            <li><span>Ricardo (Programa CAF II e Santos Dumont)</span><span class="val">6 Projetos</span></li>
+            <li><span>Bernadete (UPAs, NEXUS, Paranapiacaba)</span><span class="val">4 Projetos</span></li>
+          </ul>
+          <ul class="arch-list">
+            <li><span>Ivana (DDM, Casa Mulher, Calçadas)</span><span class="val">3 Projetos</span></li>
+            <li><span>Daniel (Drenagem Erato / Guarará)</span><span class="val">2 Projetos</span></li>
+            <li><span>Douglas (Corredor Taioca)</span><span class="val">1 Projeto</span></li>
+            <li><span style="color:var(--accent-red); font-weight:700;">5 Projetos "À Definir"</span><span class="val red">Reformas</span></li>
+          </ul>
+        </div>
+      </div>
+    `,
+    footer: "Quadro de Lotação • Secretaria de Infraestrutura e Obras"
+  },
+  {
+    number: "09",
+    pretitle: "Agenda Executiva Imediata",
+    title: "Prioridades de 30 de Outubro a 06 de Novembro",
+    body: `
+      <div class="grid-3">
+        <div class="arch-box critical-highlight">
+          <h3 style="color: var(--accent-red);">Hoje (30/10)</h3>
+          <ul class="arch-list">
+            <li><span>Desmembramento Matrícula CRAISA</span><span class="val red">Sec. Jeferson</span></li>
+            <li><span>Finalização Minutas Licitação UPA</span><span class="val">Fábio</span></li>
+          </ul>
+        </div>
+        <div class="arch-box critical-highlight">
+          <h3 style="color: var(--accent-red);">Terça (03/11)</h3>
+          <ul class="arch-list">
+            <li><span>DOD, ETP e TR UPA CRAISA</span><span class="val red">Entrega</span></li>
+            <li><span>Chamamento Mobiliário Atrium</span><span class="val">Alexandra</span></li>
+          </ul>
+        </div>
+        <div class="arch-box critical-highlight">
+          <h3 style="color: var(--accent-red);">Sexta (06/11)</h3>
+          <ul class="arch-list">
+            <li><span>Pacote de Licitação UPA CRAISA</span><span class="val red">KINGLINE</span></li>
+            <li><span>Projetos Piso/Cobertura Oliveira Lima</span><span class="val">Caixa</span></li>
+            <li><span>Implantação Terreno CAPS e Mulher</span><span class="val">Lucas/Fábio</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mies-quote" style="margin-top: 24px;">
+        "Deus está nos detalhes." — A governança pontual de cada marco na esteira semanal é o que transforma o planejamento em canteiro de obras ativo.
+      </div>
+    `,
+    footer: "Agenda Operacional Imediata"
+  },
+  {
+    number: "10",
+    pretitle: "Diretrizes Executivas",
+    title: "Recomendações para a Diretoria de Obras",
+    body: `
+      <div class="grid-3">
+        <div class="arch-box critical-highlight">
+          <h3 style="color: var(--accent-red);">1. Pacote UPA CRAISA</h3>
+          <p style="font-size: 11px; line-height: 1.6; color: var(--text-black);">
+            Cobrar com rigor a KINGLINE para a entrega irrevogável do pacote licitatório da UPA CRAISA em 06/11 para não comprometer a abertura do certame semi-integrado.
+          </p>
+        </div>
+        <div class="arch-box critical-highlight">
+          <h3 style="color: var(--accent-red);">2. Entrega 19/11 Pediatria</h3>
+          <p style="font-size: 11px; line-height: 1.6; color: var(--text-black);">
+            Monitorar os repasses da FUABC e UNINOVE para a entrega do Super Especialidades em 19/11 e alinhamento da comunicação visual.
+          </p>
+        </div>
+        <div class="arch-box">
+          <h3>3. Protocolo Actos Trincheira</h3>
+          <p style="font-size: 11px; line-height: 1.6; color: var(--text-black);">
+            Acompanhar a tramitação do Processo 187280.2026 no SEMASA para emissão do roteiro de licenciamento antes da entrega do projeto executivo em 15/11.
+          </p>
+        </div>
+      </div>
+      <div class="mies-quote" style="margin-top: 24px;">
+        "Menos é mais." — O rigor e a objetividade em cada projeto estruturam o futuro de Santo André.
+      </div>
+    `,
+    footer: "Diretrizes Executivas • Sexta-feira, 04/11/2026"
+  }
+];
+
+function renderSlide(index) {
+  const s = slides[index];
+  const container = document.getElementById("slide-content");
+  container.innerHTML = `
+    <div class="slide-header">
+      <div>
+        <div class="slide-pretitle">${s.pretitle}</div>
+        <h2 class="slide-title">${s.title}</h2>
+      </div>
+      <div class="slide-meta">
+        <div class="number">${s.number}</div>
+        <div>/ 10</div>
+      </div>
+    </div>
+    <div class="slide-body">
+      ${s.body}
+    </div>
+    <div class="slide-footer">
+      <div>Santo André • Secretaria de Infraestrutura e Obras</div>
+      <div>${s.footer}</div>
+      <div>Prancha ${index + 1} de ${slides.length}</div>
+    </div>
+  `;
+
+  document.getElementById("prev-btn").disabled = (index === 0);
+  document.getElementById("next-btn").disabled = (index === slides.length - 1);
+
+  const dotsContainer = document.getElementById("slide-dots");
+  dotsContainer.innerHTML = slides.map((_, i) => `
+    <div class="slide-dot ${i === index ? 'active' : ''}" onclick="goToSlide(${i})"></div>
+  `).join("");
+}
+
+function nextSlide() {
+  if (currentSlide < slides.length - 1) {
+    currentSlide++;
+    renderSlide(currentSlide);
+  }
+}
+
+function prevSlide() {
+  if (currentSlide > 0) {
+    currentSlide--;
+    renderSlide(currentSlide);
+  }
+}
+
+function goToSlide(i) {
+  currentSlide = i;
+  renderSlide(currentSlide);
+}
+
+document.addEventListener("keydown", (e) => {
+  if (document.getElementById("slides-view").style.display !== "none") {
+    if (e.key === "ArrowRight") nextSlide();
+    if (e.key === "ArrowLeft") prevSlide();
+  }
+});
+
+function switchView(view) {
+  const slidesView = document.getElementById("slides-view");
+  const dashView = document.getElementById("dashboard-view");
+  const btnSlides = document.getElementById("btn-slides");
+  const btnDash = document.getElementById("btn-dashboard");
+
+  if (view === "slides") {
+    slidesView.style.display = "block";
+    dashView.style.display = "none";
+    btnSlides.classList.add("active");
+    btnDash.classList.remove("active");
+  } else {
+    slidesView.style.display = "none";
+    dashView.style.display = "block";
+    btnSlides.classList.remove("active");
+    btnDash.classList.add("active");
+    renderDashboard();
+    renderCalendar();
+    renderTimelineTab();
+  }
+}
+
+function switchDashTab(tab) {
+  document.getElementById("dash-tab-cards").style.display = (tab === 'cards') ? 'block' : 'none';
+  document.getElementById("dash-tab-calendar").style.display = (tab === 'calendar') ? 'block' : 'none';
+  document.getElementById("dash-tab-timeline").style.display = (tab === 'timeline') ? 'block' : 'none';
+  document.getElementById("dash-tab-table").style.display = (tab === 'table') ? 'block' : 'none';
+
+  document.getElementById("tab-btn-cards").classList.toggle("active", tab === 'cards');
+  document.getElementById("tab-btn-calendar").classList.toggle("active", tab === 'calendar');
+  document.getElementById("tab-btn-timeline").classList.toggle("active", tab === 'timeline');
+  document.getElementById("tab-btn-table").classList.toggle("active", tab === 'table');
+
+  if (tab === 'calendar') {
+    renderCalendar();
+  } else if (tab === 'timeline') {
+    renderTimelineTab();
+  }
+}
+
+let filteredProjects = [...rawProjects];
+
+function renderDashboard() {
+  const grid = document.getElementById("projects-grid");
+  const tbody = document.getElementById("table-body");
+
+  const calProjSelect = document.getElementById("cal-filter-proj");
+  if (calProjSelect && calProjSelect.options.length <= 1) {
+    rawProjects.forEach(p => {
+      const opt = document.createElement("option");
+      opt.value = p.id;
+      opt.textContent = `#${String(p.id).padStart(2,'0')} - ${p.projeto}`;
+      calProjSelect.appendChild(opt);
+    });
+  }
+
+  const projSelect = document.getElementById("timeline-project-filter");
+  const activeProjsWithAndamento = rawProjects.filter(p => p.andamento.length > 0);
+  projSelect.innerHTML = '<option value="">Todos os Projetos com Atividade (' + activeProjsWithAndamento.length + ')</option>' +
+    activeProjsWithAndamento.map(p => `<option value="${p.id}">#${String(p.id).padStart(2,'0')} - ${p.projeto} (${p.andamento.length} ações)</option>`).join("");
+
+  grid.innerHTML = filteredProjects.map(p => {
+    let badgeClass = p.status.toLowerCase() === "crítico" ? "critico" : (p.status.toLowerCase() === "atenção" ? "atencao" : "monitorar");
+    let orc = p.orcamento_raw;
+    let andamentoBadge = p.andamento.length > 0 
+      ? `<span class="andamento-tag"><strong>${p.andamento.length}</strong> ações na aba ANDAMENTO</span>`
+      : `<span class="andamento-tag" style="color:#888;">Sem registro semanal</span>`;
+
+    let critCallout = p.ponto_critico 
+      ? `<div class="critical-callout"><strong>Ponto Crítico:</strong> ${p.ponto_critico}</div>` 
+      : '';
+
+    return `
+      <div class="project-card" onclick="openModal(${p.id})">
+        <div>
+          <div class="card-top">
+            <span class="card-id">#${String(p.id).padStart(2, '0')}</span>
+            <span class="badge ${badgeClass}">${p.status}</span>
+          </div>
+          <div class="card-title">${p.projeto}</div>
+          <div class="card-mother">Mãe: ${p.projeto_mae}</div>
+          ${andamentoBadge}
+          <div class="card-desc">${p.descricao || 'Sem descrição detalhada.'}</div>
+          ${critCallout}
+        </div>
+        <div class="card-meta">
+          <span>Resp: <strong>${p.responsavel}</strong></span>
+          <span>${orc}</span>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  tbody.innerHTML = filteredProjects.map(p => {
+    let badgeClass = p.status.toLowerCase() === "crítico" ? "critico" : (p.status.toLowerCase() === "atenção" ? "atencao" : "monitorar");
+    let orc = p.orcamento_raw;
+    let andCount = p.andamento.length > 0 ? `<strong>${p.andamento.length} ações</strong>` : `<span style="color:#999;">-</span>`;
+    let ptCrit = p.ponto_critico ? `<span style="color:var(--accent-red); font-weight:bold;">${p.ponto_critico}</span>` : '-';
+
+    return `
+      <tr onclick="openModal(${p.id})" style="cursor: pointer;">
+        <td>#${String(p.id).padStart(2, '0')}</td>
+        <td><strong>${p.projeto}</strong></td>
+        <td>${p.projeto_mae}</td>
+        <td>${p.responsavel}</td>
+        <td>${p.escala}</td>
+        <td>${orc}</td>
+        <td>${ptCrit}</td>
+        <td><span class="badge ${badgeClass}">${p.status}</span></td>
+        <td>${andCount}</td>
+      </tr>
+    `;
+  }).join("");
+}
+
+function filterProjects() {
+  const q = document.getElementById("search-input").value.toLowerCase();
+  const st = document.getElementById("filter-status").value;
+  const resp = document.getElementById("filter-resp").value;
+  const prog = document.getElementById("filter-prog").value;
+
+  filteredProjects = rawProjects.filter(p => {
+    const matchesSearch = !q || 
+      p.projeto.toLowerCase().includes(q) || 
+      p.descricao.toLowerCase().includes(q) || 
+      p.localizacao.toLowerCase().includes(q) || 
+      p.projeto_mae.toLowerCase().includes(q);
+
+    const matchesStatus = !st || p.status.toUpperCase() === st.toUpperCase();
+    
+    let matchesResp = true;
+    if (resp === "À definir") {
+      matchesResp = p.responsavel === "À definir" || !p.responsavel;
+    } else if (resp) {
+      matchesResp = p.responsavel.includes(resp);
+    }
+
+    let matchesProg = true;
+    if (prog) {
+      matchesProg = p.projeto_mae.toUpperCase().includes(prog.toUpperCase());
+    }
+
+    return matchesSearch && matchesStatus && matchesResp && matchesProg;
+  });
+
+  renderDashboard();
+}
+
+/* ========================================================
+   CALENDÁRIO DE ANDAMENTO (Acompanhamento das Principais Datas)
+   ======================================================== */
+let calCurrentYear = 2026;
+let calCurrentMonth = 10; // October (0-indexed: 9 is Outubro)
+let calSelectedDate = "2026-11-04"; // Today
+
+const monthNames = [
+  "JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO",
+  "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"
+];
+
+function prevMonth() {
+  calCurrentMonth--;
+  if (calCurrentMonth < 0) {
+    calCurrentMonth = 11;
+    calCurrentYear--;
+  }
+  calSelectedDate = null;
+  renderCalendar();
+}
+
+function nextMonth() {
+  calCurrentMonth++;
+  if (calCurrentMonth > 11) {
+    calCurrentMonth = 0;
+    calCurrentYear++;
+  }
+  calSelectedDate = null;
+  renderCalendar();
+}
+
+function selectCalendarDay(isoDate) {
+  calSelectedDate = isoDate;
+  renderCalendar();
+}
+
+function renderCalendar() {
+  const gridBody = document.getElementById("cal-grid-body");
+  const monthLabel = document.getElementById("cal-current-month-label");
+  const agendaContainer = document.getElementById("agenda-cards-container");
+  const agendaTitle = document.getElementById("agenda-panel-title");
+  const agendaBadge = document.getElementById("agenda-count-badge");
+
+  monthLabel.textContent = `${monthNames[calCurrentMonth]} ${calCurrentYear}`;
+
+  const filterProj = document.getElementById("cal-filter-proj") ? document.getElementById("cal-filter-proj").value : "";
+  const filterType = document.getElementById("cal-filter-type") ? document.getElementById("cal-filter-type").value : "";
+  const filterStatus = document.getElementById("cal-filter-status") ? document.getElementById("cal-filter-status").value : "";
+
+  let activeEvents = rawCalendarEvents.filter(ev => {
+    const matchesProj = !filterProj || ev.project_id === parseInt(filterProj);
+    const matchesType = !filterType || ev.type === filterType;
+    const matchesStatus = !filterStatus || ev.status.toUpperCase() === filterStatus.toUpperCase();
+    return matchesProj && matchesType && matchesStatus;
+  });
+
+  const firstDay = new Date(calCurrentYear, calCurrentMonth, 1).getDay();
+  const daysInMonth = new Date(calCurrentYear, calCurrentMonth + 1, 0).getDate();
+  const prevMonthDays = new Date(calCurrentYear, calCurrentMonth, 0).getDate();
+
+  let htmlRows = "";
+  let dayCounter = 1;
+  let nextMonthDayCounter = 1;
+
+  for (let row = 0; row < 6; row++) {
+    let rowHtml = "<tr>";
+    for (let col = 0; col < 7; col++) {
+      let cellDay = 0;
+      let isCurrentMonth = true;
+      let isoDate = "";
+
+      if (row === 0 && col < firstDay) {
+        cellDay = prevMonthDays - (firstDay - col - 1);
+        isCurrentMonth = false;
+        let pm = calCurrentMonth - 1;
+        let py = calCurrentYear;
+        if (pm < 0) { pm = 11; py--; }
+        isoDate = `${py}-${String(pm + 1).padStart(2,'0')}-${String(cellDay).padStart(2,'0')}`;
+      } else if (dayCounter > daysInMonth) {
+        cellDay = nextMonthDayCounter++;
+        isCurrentMonth = false;
+        let nm = calCurrentMonth + 1;
+        let ny = calCurrentYear;
+        if (nm > 11) { nm = 0; ny++; }
+        isoDate = `${ny}-${String(nm + 1).padStart(2,'0')}-${String(cellDay).padStart(2,'0')}`;
+      } else {
+        cellDay = dayCounter++;
+        isoDate = `${calCurrentYear}-${String(calCurrentMonth + 1).padStart(2,'0')}-${String(cellDay).padStart(2,'0')}`;
+      }
+
+      const isToday = (isoDate === "2026-11-04");
+      const isSelected = (isoDate === calSelectedDate);
+      const dayEvents = activeEvents.filter(e => e.date === isoDate);
+
+      let tdClass = isCurrentMonth ? "" : "other-month";
+      if (isToday) tdClass += " today";
+      if (isSelected) tdClass += " selected";
+
+      let pillsHtml = dayEvents.slice(0, 3).map(ev => {
+        let pClass = ev.status.toLowerCase() === "crítico" ? "critico" : (ev.status.toLowerCase() === "atenção" ? "atencao" : (ev.status.toLowerCase() === "concluído" ? "concluido" : ""));
+        let prefix = ev.type === "PRAZO" ? "Pz:" : (ev.type === "REUNIÃO" ? "Reun:" : (ev.type === "ENTREGA" ? "Entrega:" : "Edital:"));
+        return `<span class="cal-event-pill ${pClass}" title="${ev.title} (${ev.project})">${prefix} ${ev.project}</span>`;
+      }).join("");
+
+      if (dayEvents.length > 3) {
+        pillsHtml += `<span style="font-size:8px; color:var(--text-muted); font-weight:bold;">+${dayEvents.length - 3} eventos</span>`;
+      }
+
+      rowHtml += `
+        <td class="${tdClass}" onclick="selectCalendarDay('${isoDate}')">
+          <div class="day-num">
+            <span>${cellDay}</span>
+            ${isToday ? '<span class="day-badge-today">HOJE</span>' : ''}
+          </div>
+          <div>${pillsHtml}</div>
+        </td>
+      `;
+    }
+    rowHtml += "</tr>";
+    htmlRows += rowHtml;
+    if (dayCounter > daysInMonth && row >= 4) break;
+  }
+  gridBody.innerHTML = htmlRows;
+
+  let agendaEvents = [];
+  if (calSelectedDate) {
+    agendaEvents = activeEvents.filter(e => e.date === calSelectedDate);
+    const dateParts = calSelectedDate.split('-');
+    agendaTitle.textContent = `Agenda: ${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+  } else {
+    const ymPrefix = `${calCurrentYear}-${String(calCurrentMonth + 1).padStart(2,'0')}`;
+    agendaEvents = activeEvents.filter(e => e.date.startsWith(ymPrefix));
+    agendaTitle.textContent = `Agenda: ${monthNames[calCurrentMonth]} ${calCurrentYear}`;
+  }
+
+  agendaBadge.textContent = `${agendaEvents.length} evento(s)`;
+
+  if (agendaEvents.length === 0) {
+    agendaContainer.innerHTML = `
+      <div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 11px;">
+        Nenhum evento ou prazo registrado para esta data.<br>
+        <button class="nav-btn" style="margin-top:12px; padding:4px 8px;" onclick="selectCalendarDay(null)">Ver Todos do Mês</button>
+      </div>
+    `;
+  } else {
+    agendaContainer.innerHTML = agendaEvents.map(ev => {
+      let cardBorder = ev.status.toLowerCase() === "crítico" ? "critical" : (ev.status.toLowerCase() === "atenção" ? "atencao" : "");
+      let bClass = ev.status.toLowerCase() === "crítico" ? "critico" : (ev.status.toLowerCase() === "atenção" ? "atencao" : (ev.status.toLowerCase() === "concluído" ? "concluido" : "monitorar"));
+      return `
+        <div class="agenda-card ${cardBorder}" onclick="openModal(${ev.project_id || 0})">
+          <div class="agenda-card-date">
+            <span><strong>${ev.display_date}</strong> • ${ev.type}</span>
+            <span class="badge ${bClass}">${ev.status}</span>
+          </div>
+          <div class="agenda-card-title">${ev.title}</div>
+          <div style="font-size:11px; font-weight:700; margin-bottom:4px; color:var(--text-muted);">
+            #${ev.project_id ? String(ev.project_id).padStart(2,'0') : ''} ${ev.project} (Resp: ${ev.responsible || 'SIO'})
+          </div>
+          <div class="agenda-card-desc">${ev.details}</div>
+          ${ev.devolutiva ? `<div style="margin-top:6px; font-size:10px; background:#FFF; border-left:2px solid #000; padding:4px 6px;"><strong>Devolutiva / Ponto Crítico:</strong> ${ev.devolutiva}</div>` : ''}
+        </div>
+      `;
+    }).join("");
+  }
+}
+
+/* ========================================================
+   TIMELINE TAB & MODAL DETAILS
+   ======================================================== */
+function renderTimelineTab() {
+  const container = document.getElementById("timeline-view-container");
+  const selectedProjId = document.getElementById("timeline-project-filter").value;
+  const selectedStatus = document.getElementById("timeline-status-filter").value;
+
+  let targetProjects = rawProjects.filter(p => p.andamento.length > 0);
+  if (selectedProjId) {
+    targetProjects = targetProjects.filter(p => p.id === parseInt(selectedProjId));
+  }
+
+  if (targetProjects.length === 0) {
+    container.innerHTML = '<p style="color:var(--text-muted); padding:20px;">Nenhum projeto encontrado com os filtros selecionados.</p>';
+    return;
+  }
+
+  container.innerHTML = targetProjects.map(p => {
+    let items = p.andamento;
+    if (selectedStatus) {
+      items = items.filter(it => it.status.toUpperCase() === selectedStatus.toUpperCase());
+    }
+    if (items.length === 0) return '';
+
+    return `
+      <div class="project-timeline-block">
+        <div class="pt-header">
+          <div>
+            <span style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">#${String(p.id).padStart(2,'0')} • ${p.secretaria} • Resp: ${p.responsavel}</span>
+            <div class="pt-title">${p.projeto}</div>
+          </div>
+          <span class="badge ${p.status.toLowerCase() === 'crítico' ? 'critico' : (p.status.toLowerCase() === 'atenção' ? 'atencao' : 'monitorar')}">Status Geral: ${p.status}</span>
+        </div>
+        <div class="evolution-track">
+          ${items.map(it => {
+            let nodeClass = it.status.toLowerCase() === 'concluído' ? 'concluido' : (it.status.toLowerCase() === 'crítico' ? 'critico' : (it.status.toLowerCase() === 'atenção' ? 'atencao' : ''));
+            let badgeClass = it.status.toLowerCase() === 'concluído' ? 'concluido' : (it.status.toLowerCase() === 'crítico' ? 'critico' : (it.status.toLowerCase() === 'atenção' ? 'atencao' : 'monitorar'));
+            return `
+              <div class="evolution-item">
+                <div class="evolution-node ${nodeClass}"></div>
+                <div class="evolution-content">
+                  <div class="evolution-meta">
+                    <span><strong>Data da Reunião:</strong> ${it.data_reuniao || 'Não indicada'} • <strong>Etapa:</strong> ${it.etapa || 'Geral'} • <strong>Resp:</strong> ${it.responsavel || p.responsavel}</span>
+                    <span class="badge ${badgeClass}">${it.status}</span>
+                  </div>
+                  <div style="font-size:11px; color:var(--text-muted); margin-bottom:4px;"><strong>Assunto:</strong> ${it.assunto}</div>
+                  <div class="evolution-action">${it.acao.replace(/\\n/g, '<br>')}</div>
+                  ${it.devolutiva ? `<div class="evolution-feedback"><strong>Devolutiva / Retorno:</strong><br>${it.devolutiva.replace(/\\n/g, '<br>')}</div>` : ''}
+                  ${it.prazo ? `<div style="margin-top:6px; font-size:11px; color:var(--accent-red); font-weight:700;">Prazo Limite: ${it.prazo}</div>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function openModal(id) {
+  if (!id) return;
+  const p = rawProjects.find(item => item.id === id);
+  if (!p) return;
+
+  const modal = document.getElementById("project-modal");
+  const body = document.getElementById("modal-body");
+  let badgeClass = p.status.toLowerCase() === "crítico" ? "critico" : (p.status.toLowerCase() === "atenção" ? "atencao" : "monitorar");
+
+  let andamentoHtml = '';
+  if (p.andamento && p.andamento.length > 0) {
+    andamentoHtml = `
+      <div style="border-top: 1px solid var(--line-black); padding-top: 20px; margin-top: 20px;">
+        <h4 style="font-size: 13px; margin-bottom: 12px; color:var(--text-black);">HISTÓRICO DE EVOLUÇÃO SEMANAL (ABA ANDAMENTO)</h4>
+        <div class="evolution-track">
+          ${p.andamento.map(it => {
+            let nodeClass = it.status.toLowerCase() === 'concluído' ? 'concluido' : (it.status.toLowerCase() === 'crítico' ? 'critico' : (it.status.toLowerCase() === 'atenção' ? 'atencao' : ''));
+            let bClass = it.status.toLowerCase() === 'concluído' ? 'concluido' : (it.status.toLowerCase() === 'crítico' ? 'critico' : (it.status.toLowerCase() === 'atenção' ? 'atencao' : 'monitorar'));
+            return `
+              <div class="evolution-item">
+                <div class="evolution-node ${nodeClass}"></div>
+                <div class="evolution-content">
+                  <div class="evolution-meta">
+                    <span>Reunião: <strong>${it.data_reuniao || 'Pendente'}</strong> • Resp: ${it.responsavel}</span>
+                    <span class="badge ${bClass}">${it.status}</span>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;"><strong>Assunto:</strong> ${it.assunto} • <strong>Etapa:</strong> ${it.etapa}</div>
+                  <div class="evolution-action">${it.acao.replace(/\\n/g, '<br>')}</div>
+                  ${it.devolutiva ? `<div class="evolution-feedback"><strong>Devolutiva:</strong><br>${it.devolutiva.replace(/\\n/g, '<br>')}</div>` : ''}
+                  ${it.prazo ? `<div style="margin-top: 6px; font-size: 11px; color: var(--accent-red); font-weight: 700;">Prazo: ${it.prazo}</div>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  } else {
+    andamentoHtml = `
+      <div style="border-top: 1px solid var(--line-gray); padding-top: 16px; margin-top: 20px; color: var(--text-muted); font-size: 11px;">
+        <em>Nenhuma atividade semanal específica registrada na aba ANDAMENTO até o momento. Projeto em fase preliminar de levantamento/escopo.</em>
+      </div>
+    `;
+  }
+
+  let critCalloutModal = p.ponto_critico 
+    ? `<div class="critical-callout" style="margin-bottom:16px;"><strong>Ponto Crítico Declarado na Planilha:</strong> ${p.ponto_critico}</div>` 
+    : '';
+
+  body.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--line-black);">
+      <div>
+        <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">ID #${String(p.id).padStart(2, '0')} • Escala: ${p.escala}</div>
+        <h2 style="font-size: 20px; line-height: 1.2;">${p.projeto}</h2>
+      </div>
+      <span class="badge ${badgeClass}" style="font-size: 12px; padding: 4px 10px;">${p.status}</span>
+    </div>
+
+    ${critCalloutModal}
+
+    <div class="grid-2" style="margin-bottom: 20px;">
+      <div>
+        <p style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Projeto Mãe</p>
+        <p style="font-size: 13px; font-weight: 700; margin-bottom: 12px;">${p.projeto_mae}</p>
+
+        <p style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Responsável Técnico</p>
+        <p style="font-size: 13px; font-weight: 700; margin-bottom: 12px;">${p.responsavel}</p>
+
+        <p style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Secretaria Solicitante</p>
+        <p style="font-size: 13px; margin-bottom: 12px;">${p.secretaria}</p>
+
+        <p style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Categoria Urbanística</p>
+        <p style="font-size: 13px;">${p.categoria}</p>
+      </div>
+      <div>
+        <p style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Orçamento Estimado</p>
+        <p style="font-size: 16px; font-weight: 700; color: var(--text-black); margin-bottom: 12px;">${p.orcamento_raw}</p>
+
+        <p style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Fonte de Recurso</p>
+        <p style="font-size: 13px; margin-bottom: 12px;">${p.fonte_recurso}</p>
+
+        <p style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Modelo de Contratação</p>
+        <p style="font-size: 13px;">${p.modelo_contratacao}</p>
+      </div>
+    </div>
+
+    <div style="border: 1px solid var(--line-black); padding: 16px; margin-bottom: 20px;">
+      <h4 style="font-size: 11px; margin-bottom: 6px;">DESCRIÇÃO & ESCOPO</h4>
+      <p style="font-size: 12px; line-height: 1.6;">${p.descricao || 'Nenhuma descrição detalhada informada.'}</p>
+      ${p.ficha_tecnica ? `<p style="margin-top: 10px; font-size: 11px; color: var(--text-muted);"><strong>Ficha Técnica / Notas:</strong> ${p.ficha_tecnica}</p>` : ''}
+      ${p.localizacao ? `<p style="margin-top: 8px; font-size: 11px; color: var(--text-muted);"><strong>Localização:</strong> ${p.localizacao}</p>` : ''}
+    </div>
+
+    <div style="border-top: 1px solid var(--line-gray); padding-top: 16px;">
+      <h4 style="font-size: 11px; margin-bottom: 10px;">LINHA DO TEMPO DOS MARCOS GERAIS</h4>
+      <div class="timeline-bar">
+        <div class="timeline-step ${p.desenv_projeto ? 'active' : ''}">Projeto Básico<br><strong>${p.desenv_projeto || '-'}</strong></div>
+        <div class="timeline-step ${p.publicacao_edital ? 'active' : ''}">Edital Licitação<br><strong>${p.publicacao_edital || '-'}</strong></div>
+        <div class="timeline-step ${p.ordem_servico ? 'active' : ''}">Ordem de Serviço<br><strong>${p.ordem_servico || '-'}</strong></div>
+        <div class="timeline-step ${p.entrega ? 'active' : ''}">Conclusão / Entrega<br><strong>${p.entrega || '-'}</strong></div>
+      </div>
+    </div>
+
+    ${andamentoHtml}
+  `;
+
+  modal.style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("project-modal").style.display = "none";
+}
+
+let sortAsc = true;
+function sortTable(n) {
+  const table = document.getElementById("projects-table");
+  let rows, switching, i, x, y, shouldSwitch;
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      if (sortAsc) {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      } else {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+  sortAsc = !sortAsc;
+}
+
+renderSlide(0);
+</script>
+</body>
+</html>
